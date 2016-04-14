@@ -1,0 +1,15 @@
+@import "_reset.css";
+@import "_type.css";
+
+:root {
+  --purple: #847AD1;
+  --large: 10px;
+}
+
+a {
+  color: var(--purple);
+}
+
+pre {
+  padding: var(--large);
+}
