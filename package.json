@@ -1,0 +1,28 @@
+{
+  "name": "joseki.party",
+  "version": "1.0.0",
+  "description": "GUI for Go",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "surge --domain joseki.party",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosekiParty/joseki.party.git"
+  },
+  "keywords": [
+    "Go",
+    "Goban.",
+    "Weiqi"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosekiParty/joseki.party/issues"
+  },
+  "homepage": "http://joseki.party",
+  "devDependencies": {
+    "surge": "^0.17.7"
+  }
+}
