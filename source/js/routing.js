@@ -1,6 +1,7 @@
 import routeMatcher from 'route-matcher'
 let match = routeMatcher.routeMatcher
 
+import bus from './bus'
 /**
 * Parse URL and navigate to correct pane/state
 */
@@ -13,13 +14,13 @@ function parseRoute () {
   let playing = match('/:game/:color/').parse(url)
 
   if (home) {
-    console.log("home")
+    bus.emit('view:home')
   } else if (watching) {
-    console.log(`you are watching game ${watching.game}`)
+    bus.emit('view:watching', watching)
   } else if (playing) {
-    console.log(`you are playing game ${playing.game} as ${playing.color}`)
+    bus.emit('view:playing', playing)
   } else {
-    console.log(`I don't know where you are, 404 dawg`)
+    bus.emit('view:404')
   }
 }
 

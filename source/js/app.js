@@ -1,14 +1,19 @@
 import generateName from 'sillyname'
 import Firebase from 'firebase'
-import Emitter from 'tiny-emitter'
 
+import bus from './bus'
 import parseRoute from './routing'
 
 // Set up event bus for tracking intention, callbacks
-var bus = new Emitter();
+
 bus.on('black-move', postBlack)
 bus.on('white-move', postWhite)
 bus.on('update', render)
+bus.on('view:home', atHome)
+bus.on('view:watching', watchingGame)
+bus.on('view:playing', playingGame)
+bus.on('view:404', at404)
+
 
 // Where are we tho?
 parseRoute()
@@ -57,3 +62,8 @@ function render (state) {
     whiteButton.setAttribute('disabled', true)
   }
 }
+
+function atHome () { console.log("home") }
+function at404 () { console.log(`I don't know where you are, 404 dawg`) }
+function watchingGame (watching) { console.log(`you are watching game ${watching.game}`) }
+function playingGame (playing) { console.log(`you are playing game ${playing.game} as ${playing.color}`) }
