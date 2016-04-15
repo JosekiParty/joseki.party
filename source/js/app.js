@@ -1,5 +1,4 @@
 import generateName from 'sillyname'
-<<<<<<< HEAD
 import Firebase from 'firebase'
 
 import bus from './bus'
