@@ -16,7 +16,16 @@
     "deploy": "surge -p build/ -d joseki.party"
   },
   "browserify": {
-    "transform": [["babelify", { "presets": ["es2015"] }]]
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
   },
   "watches": {
     "css": "source/css/**",
@@ -51,6 +60,9 @@
     "surge": "^0.17.7"
   },
   "dependencies": {
-    "sillyname": "^0.1.0"
+    "firebase": "^2.4.2",
+    "route-matcher": "^0.1.0",
+    "sillyname": "^0.1.0",
+    "tiny-emitter": "^1.0.2"
   }
 }
