@@ -2,11 +2,16 @@ import generateName from 'sillyname'
 import Firebase from 'firebase'
 import Emitter from 'tiny-emitter'
 
+import parseRoute from './routing'
+
 // Set up event bus for tracking intention, callbacks
 var bus = new Emitter();
 bus.on('black-move', postBlack)
 bus.on('white-move', postWhite)
 bus.on('update', render)
+
+// Where are we tho?
+parseRoute()
 
 // Set up firebase as a game server
 var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
