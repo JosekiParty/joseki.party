@@ -1,5 +1,6 @@
 @import "_reset.css";
 @import "_type.css";
+@import "_board.css";
 
 :root {
   --purple: #847AD1;
