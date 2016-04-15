@@ -1,0 +1,55 @@
+/* The background lines for the board */
+.board {
+  width: 702px;
+  width: 702px;
+  background: url('13x13.svg') no-repeat center transparent;
+  background-size: 649px;
+  margin: 0 auto;
+}
+
+.board-row {
+  width: 702px;
+}
+
+.board-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* A space you can play in */
+.node {
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  margin: 2px;
+  display: inline-block;
+  border: 2px solid transparent;
+  float: left;
+  cursor: default;
+}
+
+.node-empty {
+  cursor: pointer;
+}
+
+.node-white {
+  background-color: white;
+  border-color: white;
+}
+
+.node-black {
+  background-color: black;
+  border-color: black;
+}
+
+.board-turn-white .node.node-empty:hover {
+  border-color: white;
+  background-color: rgba(255, 255, 255, .4);
+}
+
+.board-turn-black .node.node-empty:hover {
+  border-color: black;
+  background-color: rgba(0, 0, 0, .4);
+}
