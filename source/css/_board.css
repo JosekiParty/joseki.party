@@ -54,14 +54,14 @@
   border-radius: 12px;
 }
 
-.player-white.board-turn-white .node.node-empty:hover, .player-white.board-turn-white .node.node-empty:focus {
+.player-white .board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
   outline: none;
   border-color: white;
   background-color: rgba(255, 255, 255, .4);
   cursor: pointer;
 }
 
-.player-black.board-turn-black .node.node-empty:hover, .player-black.board-turn-black .node.node-empty:focus {
+.player-black .board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
   outline: none;
   border-color: black;
   background-color: rgba(0, 0, 0, .4);
