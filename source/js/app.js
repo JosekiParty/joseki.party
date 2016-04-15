@@ -1,4 +1,5 @@
 import generateName from 'sillyname'
+<<<<<<< HEAD
 import Firebase from 'firebase'
 
 import bus from './bus'
@@ -71,3 +72,10 @@ function playingGame (playing) {
 function atHome () { console.log("home") }
 function at404 () { console.log(`I don't know where you are, 404 dawg`) }
 function watchingGame (watching) { console.log(`you are watching game ${watching.game}`) }
+
+import render from './render'
+import exampleGame from './example'
+
+render(exampleGame)
+console.log(generateName())
+
