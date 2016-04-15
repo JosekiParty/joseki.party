@@ -63,6 +63,7 @@
     "firebase": "^2.4.2",
     "route-matcher": "^0.1.0",
     "sillyname": "^0.1.0",
-    "tiny-emitter": "^1.0.2"
+    "tiny-emitter": "^1.0.2",
+    "weiqi": "^0.2.0"
   }
 }

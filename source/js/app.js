@@ -1,11 +1,8 @@
-import generateName from 'sillyname'
-import Firebase from 'firebase'
-
 import bus from './bus'
 import parseRoute from './routing'
+import model from './model'
 
 // Set up event bus for tracking intention, callbacks
-
 bus.on('black-move', postBlack)
 bus.on('white-move', postWhite)
 bus.on('update', render)
@@ -14,12 +11,10 @@ bus.on('view:watching', watchingGame)
 bus.on('view:playing', playingGame)
 bus.on('view:404', at404)
 
-
 // Where are we tho?
 parseRoute()
-
-// Set up firebase as a game server
-var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
+// set up the model
+model()
 
 // Simple button intention interpreters
 var blackButton = document.querySelector('.js-black')
@@ -38,15 +33,7 @@ function whiteMove (e) {
   bus.emit('white-move')
 }
 
-// Super simple game state model sent to the gameserver
-function postBlack () {
-  gameServer.set(true)
-}
-function postWhite () {
-  gameServer.set(false)
-}
-
-// Is a listerner. When game serverstate changes, emit update event with state
+// Is a listener. When game serverstate changes, emit update event with state
 gameServer.on('value', function (serverState) {
   console.log(serverState)
   bus.emit('update', serverState.val())
@@ -76,5 +63,5 @@ import render from './render'
 import exampleGame from './example'
 
 render(exampleGame)
-console.log(generateName())
+
 
