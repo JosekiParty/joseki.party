@@ -10,7 +10,6 @@ bus.on('update', render)
 
 // Set up firebase as a game server
 var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
-gameServer.set('hello world')
 
 // Simple button intention interpreters
 var blackButton = document.querySelector('.js-black')
