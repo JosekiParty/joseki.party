@@ -10,7 +10,7 @@
     "img": "imagemin-newer source/img/ build",
     "html": "cp source/*.* build/",
     "prestart": "mkdir -p build && npm-run-series img html css",
-    "start": "parallelshell 'rerun-script' 'npm run js -- -w' 'npm run css -- -w' 'live-server --entry-file=200.html build'",
+    "start": "parallelshell 'rerun-script' 'npm run js -- -w' 'live-server --entry-file=200.html build'",
     "test": "standard source/js/**/*.js",
     "predeploy": "npm-run-series prestart js",
     "deploy": "surge -p build/ -d joseki.party"
@@ -28,6 +28,7 @@
     ]
   },
   "watches": {
+    "css": "source/css/**",
     "img": "source/img/**",
     "html": "source/*.*"
   },
