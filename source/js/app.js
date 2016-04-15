@@ -63,7 +63,11 @@ function render (state) {
   }
 }
 
+function playingGame (playing) {
+  console.log(`you are playing game ${playing.game} as ${playing.color}`)
+
+}
+
 function atHome () { console.log("home") }
 function at404 () { console.log(`I don't know where you are, 404 dawg`) }
 function watchingGame (watching) { console.log(`you are watching game ${watching.game}`) }
-function playingGame (playing) { console.log(`you are playing game ${playing.game} as ${playing.color}`) }
