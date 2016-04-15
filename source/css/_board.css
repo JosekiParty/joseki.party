@@ -30,10 +30,6 @@
   cursor: default;
 }
 
-.node-empty {
-  cursor: pointer;
-}
-
 .node-white {
   background-color: white;
   border-color: white;
@@ -44,12 +40,14 @@
   border-color: black;
 }
 
-.board-turn-white .node.node-empty:hover {
+.player-white.board-turn-white .node.node-empty:hover {
   border-color: white;
   background-color: rgba(255, 255, 255, .4);
+  cursor: pointer;
 }
 
-.board-turn-black .node.node-empty:hover {
+.player-black.board-turn-black .node.node-empty:hover {
   border-color: black;
   background-color: rgba(0, 0, 0, .4);
+  cursor: pointer;
 }
