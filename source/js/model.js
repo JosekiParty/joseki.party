@@ -1,37 +1,21 @@
-import generateName from 'sillyname'
+import generateName from './generate-name'
 import Firebase from 'firebase'
 import Weiqi from 'weiqi'
 import bus from './bus'
 
-function model () {
-  // Set up firebase as a game server
-  var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
+import example from './example'
 
-  bus.on('game:new', createGame)
-  function createGame (options) {
-    var roomName = newName()
-    var game = {
-      pass: {
-        black: false,
-        white: false
-      },
-      resign: {
-        black: false,
-        white: false
-      },
-      size: options.size,
-      komi: options.komi,
-      turn: 'black',
-      last: false,
-      goban: Weiqi(options.size)
-    }
+// Set up firebase as a game server
+var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
 
-    gameServer.set(roomName, game)
-  }
+bus.on('game:new', createGame)
 
-  function newRoomName () {
-    return generateName()
-  }
+function createGame (options) {
+  // Create new game model with all our data for the UI
+  // generate random game name
+  var roomName = generateName()
+  // stash the game under the room name key in the game server
+  gameServer.child(roomName).update(example)
+  // forward player to their game room as their picked color
+  window.location.assign(`/${roomName}/${options.color}`)
 }
-
-export default model
