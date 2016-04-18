@@ -15,7 +15,36 @@ function createGame (options) {
   // generate random game name
   var roomName = generateName()
   // stash the game under the room name key in the game server
-  gameServer.child(roomName).update(example)
+  gameServer.child(roomName).update({
+    pass: {
+      black: false,
+      white: false
+    },
+    resign: {
+      black: false,
+      white: false
+    },
+    size: options.size,
+    komi: options.komi,
+    turn: 'black',
+    last: false,
+    history: [],
+    goban: [
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+      [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ]
+    ]
+  })
   // forward player to their game room as their picked color
   window.location.assign(`/${roomName}/${options.color}`)
 }

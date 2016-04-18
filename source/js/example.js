@@ -13,7 +13,8 @@ export default {
   size: 13,      // board size, defined on start
   komi: 0.5,     // komi, used for scoring
   turn: 'black', // Which player is next?
-  last: false,   // Which stone was most reently played?
+  last: false,   // Keep this seperate for easy fetching?
+  history: [],   // Keep track of all the moves to rehydrate Weiqi.js
   goban: [
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
