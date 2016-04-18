@@ -3,12 +3,11 @@ import Firebase from 'firebase'
 import Weiqi from 'weiqi'
 import bus from './bus'
 
-import example from './example'
-
 // Set up firebase as a game server
 var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
 
 bus.on('game:new', createGame)
+bus.on('mode:new', node => console.log(node))
 
 function createGame (options) {
   // Create new game model with all our data for the UI

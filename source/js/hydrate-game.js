@@ -6,11 +6,12 @@ export default function hydrate (game) {
   }
 
   var Go = Weiqi.createGame(game.size)
+
   for (let i = 0; i < game.history.lenth; i++) {
-    if (!isEven(i)) {
-      Go.BLACK(game.history[i])
-    } else {
+    if (isEven(i)) {
       Go.WHITE(game.history[i])
+    } else {
+      Go.BLACK(game.history[i])
     }
   }
 

@@ -1,6 +1,6 @@
 import bus from './bus'
+import render from './render'
 import model from './model'
 import view from './view'
 import intent from './intent'
-import render from './render'
 import route from './routing'
