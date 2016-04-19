@@ -13,7 +13,6 @@ function hideViews () {
 }
 
 function view (options) {
-  console.log('get view')
   hideViews()
   if (options.section == 'game') {
     render(example)

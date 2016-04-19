@@ -28,7 +28,7 @@ function render (game) {
     let node = nodes[i]
     node.addEventListener('click', (e) => {
       e.preventDefault()
-      bus.emit('move:new', e.target)
+      bus.emit('game:play', e.target)
     })
   }
 }

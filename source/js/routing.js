@@ -21,21 +21,18 @@ export default function route () {
     var gameServer = new Firebase(`https://joseki-party.firebaseio.com/`)
     gameServer.child(watching.game).once('value', function (state) {
       if (state.val()) {
-        console.log('watching game plz')
         bus.emit('view:set', {
           section: 'game',
           watching: watching
         })
       } else {
-        console.log('new game plz')
         bus.emit('view:set', {
-          section: 'new'
+          section: 'new',
           name: watching.game
         })
       }
     })
   } else if (playing) {
-    console.log('playing game')
     bus.emit('view:set', {
       section: 'game',
       playing: playing
