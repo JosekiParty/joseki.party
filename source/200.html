@@ -28,50 +28,61 @@
   </head>
 
   <body>
-    <!-- DOM -->
+  <!-- DOM -->
     <h1 class="text-center">Joseki Party</h1>
 
-    <section class="js-view" data-view="new">
-        <div class="panel text-center">
-            <h2>New Game</h2>
-            <form class="js-new-game-form text-left">
-                <label>
-                    Komi:
-                    <select name="komi">
-                        <option value="0" selected>No Komi</option>
-                        <option value=".5">&frac12;</option>
-                        <option value="5">Five</option>
-                        <option value="5.5">Five &frac12;</option>
-                        <option value="6">Six</option>
-                        <option value="6.5">Six &frac12;</option>
-                        <option value="7">Seven</option>
-                        <option value="7.5">Seven &frac12;</option>
-                        <option value="8">Eight</option>
-                    </select>
-                </label>
-                <label>
-                    Size:
-                    <select name="size">
-                        <option value="9">9x9</option>
-                        <option value="13" selected>13x13</option>
-                        <option value="19">19x19</option>
-                    </select>
-                </label>
-                <label>
-                    Color:
-                    <select name="color">
-                        <option value="white" selected>White</option>
-                        <option value="black">Black</option>
-                    </select>
-                </label>
-                <button type="submit" class="text-center">Create Game</button>
-            </form>
-        </div>
+    <section class="js-view" data-view="home" hidden>
+      <h2 class="text-center">party time</h2>
+      <p class="text-center">
+        <a href="/new">Start New Game</a>
+      </p>
     </section>
 
-    <section class="js-board player-black"></section>
+    <section class="js-view" data-view="404" hidden>
+      <h1>404 Daaaaawg!</h1>
+    </section>
 
-    <!-- Application JS -->
+    <section class="js-view js-board player-black" data-view="game" hidden></section>
+
+    <section class="js-view" data-view="new" hidden>
+      <div class="panel text-center">
+        <h2>New Game</h2>
+        <form class="js-new-game-form text-left">
+          <label>
+            Komi:
+            <select name="komi">
+              <option value="0" selected>No Komi</option>
+              <option value=".5">&frac12;</option>
+              <option value="5">Five</option>
+              <option value="5.5">Five &frac12;</option>
+              <option value="6">Six</option>
+              <option value="6.5">Six &frac12;</option>
+              <option value="7">Seven</option>
+              <option value="7.5">Seven &frac12;</option>
+              <option value="8">Eight</option>
+            </select>
+          </label>
+          <label>
+            Size:
+            <select name="size">
+              <option value="9">9x9</option>
+              <option value="13" selected>13x13</option>
+              <option value="19">19x19</option>
+            </select>
+          </label>
+          <label>
+            Color:
+            <select name="color">
+              <option value="white" selected>White</option>
+              <option value="black">Black</option>
+            </select>
+          </label>
+          <button type="submit" class="text-center">Create Game</button>
+        </form>
+      </div>
+    </section>
+
+  <!-- Application JS -->
     <script src="/app.js"></script>
 
     <!-- TODO Analytics -->

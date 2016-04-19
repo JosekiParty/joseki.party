@@ -10,20 +10,19 @@ export default {
     black: false,
     white: false
   },
-  black: 'foo',  // unique player id stored on localstored
-  white: 'bar',  // unique player id stored on localstored
   size: 13,      // board size, defined on start
   komi: 0.5,     // komi, used for scoring
   turn: 'black', // Which player is next?
-  last: [6,5],   // Which stone was most reently played?
+  last: false,   // Keep this seperate for easy fetching?
+  history: [],   // Keep track of all the moves to rehydrate Weiqi.js
   goban: [
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
-    [ '.', '.', 'x', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
-    [ '.', '.', '.', '.', '.', 'o', '.', '.', '.', '.', '.', '.', '.' ],
+    [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
+    [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],
     [ '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' ],

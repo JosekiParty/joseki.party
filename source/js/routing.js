@@ -1,11 +1,11 @@
+import Firebase from 'firebase'
 import routeMatcher from 'route-matcher'
 let match = routeMatcher.routeMatcher
-
-import bus from './bus'
+import bus from './lib/bus'
 /**
 * Parse URL and navigate to correct pane/state
 */
-function parseRoute () {
+export default function route () {
   let url = document.location.pathname + '/'
   url = url.replace('//', '/')
 
@@ -14,14 +14,32 @@ function parseRoute () {
   let playing = match('/:game/:color/').parse(url)
 
   if (home) {
-    bus.emit('view:home')
+    bus.emit('view:set', {
+      section: 'home'
+    })
   } else if (watching) {
-    bus.emit('view:watching', watching)
+    var gameServer = new Firebase(`https://joseki-party.firebaseio.com/`)
+    gameServer.child(watching.game).once('value', function (state) {
+      if (state.val()) {
+        bus.emit('view:set', {
+          section: 'game',
+          watching: watching
+        })
+      } else {
+        bus.emit('view:set', {
+          section: 'new',
+          name: watching.game
+        })
+      }
+    })
   } else if (playing) {
-    bus.emit('view:playing', playing)
+    bus.emit('view:set', {
+      section: 'game',
+      playing: playing
+    })
   } else {
-    bus.emit('view:404')
+    bus.emit('view:set', {
+      section: 404
+    })
   }
 }
-
-export default parseRoute
