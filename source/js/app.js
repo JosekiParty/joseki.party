@@ -1,14 +1,31 @@
-import bus from './bus'
-import parseRoute from './routing'
+import bus from './lib/bus'
+import render from './lib/render'
 import model from './model'
+import view from './view'
 import intent from './intent'
-import render from './render'
+import route from './routing'
 
-// Where are we tho?
-// parseRoute()
+bus.on('view:set', handleGame)
 
-// set up the model
-// model()
+var board = document.querySelector('.js-board')
 
-bus.on('game:new', game => console.log(game))
+function handleGame (options) {
+  if (options.watching) {
+    watchGame(options.watching)
+  } else if (options.playing) {
+    playGame(options.playing)
+  }
+}
 
+function playGame (playing) {
+  board.classList.remove(`player-white`)
+  board.classList.remove(`player-black`)
+  board.classList.add(`player-${playing.color}`)
+}
+
+function watchGame (watching) {
+  board.classList.add('watching')
+}
+
+model()
+route()

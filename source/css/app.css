@@ -24,3 +24,12 @@ pre {
   max-width: 42em;
   display: table;
 }
+
+.watching .node {
+  pointer-events: none;
+}
+
+.player-black .board-turn-white .node
+.player-white .board-turn-black .node {
+  pointer-events: none;
+}
