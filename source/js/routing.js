@@ -1,3 +1,4 @@
+import Firebase from 'firebase'
 import routeMatcher from 'route-matcher'
 let match = routeMatcher.routeMatcher
 import bus from './lib/bus'
@@ -16,16 +17,22 @@ export default function route () {
     bus.emit('view:set', {
       section: 'home'
     })
-  } else if (watching && watching.game == 'new') {
-    console.log('new game plz')
-    bus.emit('view:set', {
-      section: 'new'
-    })
   } else if (watching) {
-    console.log('watching game')
-    bus.emit('view:set', {
-      section: 'game',
-      watching: watching
+    var gameServer = new Firebase(`https://joseki-party.firebaseio.com/`)
+    gameServer.child(watching.game).once('value', function (state) {
+      if (state.val()) {
+        console.log('watching game plz')
+        bus.emit('view:set', {
+          section: 'game',
+          watching: watching
+        })
+      } else {
+        console.log('new game plz')
+        bus.emit('view:set', {
+          section: 'new'
+          name: watching.game
+        })
+      }
     })
   } else if (playing) {
     console.log('playing game')

@@ -1,5 +1,6 @@
 import bus from './lib/bus'
 import render from './lib/render'
+import createGame from './create-game'
 import model from './model'
 import view from './view'
 import intent from './intent'
@@ -27,5 +28,4 @@ function watchGame (watching) {
   board.classList.add('watching')
 }
 
-model()
 route()
