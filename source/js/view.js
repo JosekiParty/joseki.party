@@ -1,10 +1,8 @@
-import bus from './bus'
-import render from './render'
-import example from './example'
+import bus from './lib/bus'
+import render from './lib/render'
+import example from './lib/example'
 
 bus.on('view:set', view)
-
-console.log(bus)
 
 function hideViews () {
   var views = document.querySelectorAll('.js-view')
@@ -15,7 +13,7 @@ function hideViews () {
 }
 
 function view (options) {
-  console.log(`please turn on section ${options.section}`)
+  console.log('get view')
   hideViews()
   if (options.section == 'game') {
     render(example)

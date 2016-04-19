@@ -1,4 +1,4 @@
-import bus from './bus'
+import bus from './lib/bus'
 import serialize from 'form-serialize'
 
 // Create Game form submissions
