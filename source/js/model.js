@@ -22,7 +22,7 @@ export default function model(game, color) {
 
   function getState (state) {
     gameState = state.val()
-    Game = Weiqi.createGame(gameState.size)
+    Game = hydrate(gameState)
     bus.emit('game:render', gameState)
   }
 
@@ -33,7 +33,7 @@ export default function model(game, color) {
     console.log(COLOR)
     Game = Game.play(Weiqi[COLOR], [y,x])
     gameState.goban = Game.getBoard().toArray()
-    gameState.history[length] = {y: y, x:x}
+    gameState.history[gameState.history.length] = {y: y, x:x, color: COLOR}
     gameState.history.length = gameState.history.length + 1
     gameServer.update(gameState)
   }
