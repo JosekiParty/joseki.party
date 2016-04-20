@@ -85,13 +85,18 @@
 .board-invite-btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  padding-left: .75em;
+  padding-left: 1.25em;
+  padding-right: 1.5em;
 }
 
 .board-invite-input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   margin-left: -.5em;
+}
+
+.board-full .board-invite {
+  display: none;
 }
 
 .watching .node {
