@@ -4,9 +4,22 @@ import bus from './lib/bus'
 bus.on('game:new', create)
 
 function create (game) {
-  console.log(game)
+  var isBlack
+  var isWhite
+  if (game.color == 'black') {
+    isBlack = true
+    isWhite = false
+  } else {
+    isBlack = false
+    isWhite = true
+  }
   var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
   gameServer.child(game.name).update({
+      name: game.name,
+      joined: {
+        black: isBlack
+        white: isWhite
+      }
       pass: {
         black: false,
         white: false
