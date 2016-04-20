@@ -2,14 +2,16 @@
   font-family: 'Asap';
   font-style: normal;
   font-weight: 400;
-  src: local('Asap'), local('Asap-Regular'), url('asap-regular.woff2') format('woff2');
+  src: url('./asap-regular.woff2') format('woff2'),
+       url('./asap-regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Asap';
   font-style: normal;
   font-weight: 700;
-  src: local('Asap Bold'), local('Asap-Bold'), url('asap-bold.woff2') format('woff2');
+  src: url('./asap-bold.woff2') format('woff2'),
+       url('./asap-bold.woff') format('woff');
 }
 
 body {
