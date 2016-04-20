@@ -10,6 +10,7 @@ import bus from './lib/bus'
 
 export default function model(game, color) {
 
+  bus.on('game:joined', playerJoin)
   bus.on('game:play', play)
   bus.on('game:pass', pass)
   bus.on('game:resign', resign)
@@ -23,6 +24,7 @@ export default function model(game, color) {
 
   function getState (state) {
     gameState = state.val()
+    gameState.me = color
     Game = hydrate(gameState)
     bus.emit('game:render', gameState)
   }
@@ -34,6 +36,15 @@ export default function model(game, color) {
     gameState.history[gameState.history.length] = {y: y, x:x, color: COLOR}
     gameState.history.length = gameState.history.length + 1
     gameServer.update(gameState)
+  }
+
+  function playerJoin (color) {
+    console.log(color)
+    if (color == 'black') {
+      gameServer.child('joined').update({black: true})
+    } else if (color == 'white') {
+      gameServer.child('joined').update({white: true})
+    }
   }
 
   function pass (data) {

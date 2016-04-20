@@ -1,6 +1,7 @@
 import bus from './bus'
 
 function render (game) {
+  // current player color lives at `game.me`
   var rows = game.goban.map((r, y) => {
     var row = r.map((n, x) => {
       var isLast = game.last[0] === y && game.last[1] === x ? 'node-last' : ''

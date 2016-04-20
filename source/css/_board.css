@@ -95,6 +95,15 @@
   margin-left: -.5em;
 }
 
+.watching .node {
+  pointer-events: none;
+}
+
+.player-black .board-turn-white .node
+.player-white .board-turn-black .node {
+  pointer-events: none;
+}
+
 /* purple drank/sizzurp theme */
 .board-purple {
   background-image: url('13x13-purple.svg');

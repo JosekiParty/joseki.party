@@ -12,13 +12,13 @@ bus.on('game:render', render)
 var board = document.querySelector('.js-board')
 
 function handleGame (options) {
-
   if (options.watching) {
     watchGame(options.watching)
     model(options.watching.game)
   } else if (options.playing) {
     playGame(options.playing)
     model(options.playing.game, options.playing.color)
+    bus.emit('game:joined', options.playing.color)
   }
 }
 
