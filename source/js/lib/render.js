@@ -23,7 +23,7 @@ function render (game) {
         Invite your opponent:
         <div class="flex">
           <input type="text" class="js-invite-input flex-1 input-text board-invite-input" value="joseki.party/whatever-cool-domain/black/" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-          <button class="js-invite-btn btn board-invite-btn">copy</button>
+          <button class="js-invite-btn btn board-invite-btn">Copy</button>
         </div>
       </label>
       ${rows.join('')}
