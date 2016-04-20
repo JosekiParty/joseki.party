@@ -32,5 +32,5 @@ function watchGame (watching) {
   board.classList.add('watching')
 }
 
-
 route()
+window.addEventListener('popstate', route)
