@@ -52,18 +52,9 @@
 .panel {
   font-size: 2rem;
   padding: 3rem 4rem;
-  border: 1px solid var(--pink);
+  border: 3px solid var(--pink);
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 42em;
   display: table;
-}
-
-.watching .node {
-  pointer-events: none;
-}
-
-.player-black .board-turn-white .node
-.player-white .board-turn-black .node {
-  pointer-events: none;
 }
