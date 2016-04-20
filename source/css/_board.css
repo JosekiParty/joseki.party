@@ -56,14 +56,67 @@
 
 .player-white .board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
   outline: none;
-  border-color: white;
-  background-color: rgba(255, 255, 255, .4);
+  background-color: white;
+  opacity: .8;
   cursor: pointer;
 }
 
 .player-black .board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
   outline: none;
-  border-color: black;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: black;
+  opacity: .8;
   cursor: pointer;
+}
+
+/* invite */
+.board-invite {
+  max-width: 20em;
+  color: var(--light-purple);
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: -5.5rem auto 0 auto;
+  z-index: 12;
+  padding-left: .5em;
+}
+
+.board-invite-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: .75em;
+}
+
+.board-invite-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-left: -.5em;
+}
+
+/* purple drank/sizzurp theme */
+.board-purple {
+  background-image: url('13x13-purple.svg');
+}
+
+.board-purple .node-white {
+  background-color: var(--pink);
+  border-color: var(--pink);
+}
+
+.board-purple .node-black {
+  background-color: var(--dark-purple);
+  border-color: var(--dark-purple);
+}
+
+.node-last:before {
+  border-color: var(--lightest-purple);
+}
+
+.player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
+  background-color: var(--pink);
+}
+
+.player-black .board-purple.board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
+  background-color: var(--dark-purple);
 }

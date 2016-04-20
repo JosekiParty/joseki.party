@@ -1,5 +1,21 @@
+@font-face {
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./asap-regular.woff2') format('woff2'),
+       url('./asap-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./asap-bold.woff2') format('woff2'),
+       url('./asap-bold.woff') format('woff');
+}
+
 body {
-  font-family: "Helvetica", sans-serif;
+  font-family: var(--font-family);
   font-size: 16px;
 }
 

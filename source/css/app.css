@@ -2,24 +2,58 @@
 @import "_type.css";
 @import "_forms.css";
 @import "_board.css";
+@import "_banner.css";
 
 :root {
-  --purple: #847AD1;
-  --large: 10px;
+  --font-family: 'Asap', sans-serif;
+  --lightest-purple: #F1EEFB;
+  --light-purple: #D9CCFF;
+  --purple: #6534ff;
+  --dark-purple: #431A5F;
+  --blue: #62bcfa;
+  --pink: #fccdd3;
+  --lavender: #bbc4ef;
+  --gray: #dfdfdf;
+  --dark-gray: #8f8f8f;
 }
 
-a {
-  color: var(--purple);
+.flex {
+  display: flex;
 }
 
-pre {
-  padding: var(--large);
+.flex-1 {
+  flex: 1 1 auto;
+}
+
+.leader-0 {
+  margin-top: 0;
+}
+
+.leader-1 {
+  margin-top: 3rem;
+}
+
+.table {
+  width: 100%;
+  min-height: 100vh;
+  display: table;
+}
+
+.table-purple {
+  background-color: var(--purple);
+  color: var(--lightest-purple);
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .panel {
-  padding: 2rem 4rem 4rem 4rem;
+  font-size: 2rem;
+  padding: 3rem 4rem;
+  border: 1px solid var(--pink);
   box-sizing: border-box;
-  background: white;
   margin: 0 auto;
   max-width: 42em;
   display: table;

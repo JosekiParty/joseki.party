@@ -1,5 +1,5 @@
 html {
-  background-color: #dfdfdf;
+  background-color: var(--purple);
   overflow-y: scroll;
   height: 100%;
   font-size: 100%;
@@ -43,7 +43,7 @@ audio:not([controls]) {
 }
 
 [hidden] {
-  display: none;
+  display: none !important;
 }
 
 svg:not(:root) {

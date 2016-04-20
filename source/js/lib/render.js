@@ -16,21 +16,19 @@ function render (game) {
     })
     return `<div class="board-row">${row.join('')}</div>`
   })
-
+  let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
   document.querySelector('.js-board').innerHTML = `
-    <section class="board board-turn-${game.turn} board-${game.size}x${game.size}">
+    <section class="board board-purple ${full} board-turn-${game.turn} board-${game.size}x${game.size}">
+      <label class="board-invite">
+        Invite your opponent:
+        <div class="flex">
+          <input type="text" class="js-invite-input flex-1 input-text board-invite-input" value="joseki.party/whatever-cool-domain/black/" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <button class="js-invite-btn btn board-invite-btn">copy</button>
+        </div>
+      </label>
       ${rows.join('')}
     </section>
   `
-
-  var nodes = document.querySelectorAll('.js-node')
-  for (let i = 0; i < nodes.length; i++) {
-    let node = nodes[i]
-    node.addEventListener('click', (e) => {
-      e.preventDefault()
-      bus.emit('game:play', e.target)
-    })
-  }
 }
 
 export default render

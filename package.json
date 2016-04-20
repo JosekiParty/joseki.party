@@ -9,7 +9,8 @@
     "css": "myth source/css/app.css build/app.css",
     "img": "imagemin-newer source/img/ build",
     "html": "cp source/*.* build/",
-    "prestart": "mkdir -p build && npm-run-series img html css",
+    "fonts": "cp source/fonts/* build/",
+    "prestart": "mkdir -p build && npm-run-series img html css fonts",
     "start": "parallelshell 'rerun-script' 'npm run js -- -w' 'live-server --entry-file=200.html build'",
     "test": "standard source/js/**/*.js",
     "predeploy": "npm-run-series prestart js",
@@ -60,6 +61,7 @@
     "surge": "^0.17.7"
   },
   "dependencies": {
+    "dom-matches": "^2.0.0",
     "firebase": "^2.4.2",
     "form-serialize": "^0.7.1",
     "route-matcher": "^0.1.0",
