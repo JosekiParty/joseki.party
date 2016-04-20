@@ -18,7 +18,14 @@ function render (game) {
   })
 
   document.querySelector('.js-board').innerHTML = `
-    <section class="board board-turn-${game.turn} board-${game.size}x${game.size}">
+    <section class="board board-purple board-turn-${game.turn} board-${game.size}x${game.size}">
+      <label class="board-invite">
+        Invite your opponent:
+        <div class="flex">
+          <input type="text" class="flex-1" value="joseki.party/whatever-cool-domain/black/">
+          <button class="btn">copy</button>
+        </div>
+      </label>
       ${rows.join('')}
     </section>
   `

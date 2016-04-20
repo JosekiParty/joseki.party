@@ -1,40 +1,53 @@
 label {
   display: block;
   margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 2.75rem;
 }
 
-button, select {
-  font-size: .875rem;
-  padding: .5rem .75rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  border-radius: 1.25rem;
-  border: none;
+.btn {
   cursor: pointer;
-  border: 1px solid #cdcdcd;
-  height: 2.25rem;
-}
-
-button {
-  width: 100%;
-  background-color: blue;
-  border-color: dark-blue;
+  display: inline-block;
+  font-size: 1rem;
+  background-color: var(--blue);
   color: white;
+  padding: .75em 1em;
+  border-radius: 1.5em;
+  border: none;
+  text-decoration: none;
+  font-family: var(--font-family);
 }
 
-button:hover, button:focus {
+.btn-large {
+  font-size: 1.25rem;
+}
+
+.btn-center {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+.btn:hover, .btn:focus {
   outline: none;
   border-color: red;
 }
 
 select {
-  background-color: #dfdfdf;
+  background-color: transparent;
   -webkit-appearance: none;
   width: auto;
   margin-left: .5rem;
+  height: 2.75rem;
+  font-size: 1rem;
+  padding: .75em 1em;
+  border-radius: 1.5em;
+  border: 1px solid var(--pink);
+  color: var(--pink);
 }
 
 select:hover, select:focus {
-  border-color: blue;
+  background-color: var(--pink);
+  color: var(--purple);
   outline: none;
 }
