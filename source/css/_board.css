@@ -1,44 +1,51 @@
+:root {
+  --board-size: 13;
+  --board-width: 60vw;
+  --node-size: calc(var(--board-width) / var(--board-size) * .8);
+}
+
 /* The background lines for the board */
+.board-wrap {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .board {
-  width: 702px;
-  width: 702px;
+  width: var(--board-width);
+  height: var(--board-width);
   background: url('13x13.svg') no-repeat center transparent;
-  background-size: 649px;
+  background-size: calc(var(--board-width) - var(--node-size));
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .board-row {
-  width: 702px;
-}
-
-.board-row:after {
-  content: "";
-  display: table;
-  clear: both;
+  width: var(--board-width);
+  display: flex;
+  justify-content: space-between;
 }
 
 /* A space you can play in */
 .node {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: var(--node-size);
+  height: var(--node-size);
   box-sizing: border-box;
-  border-radius: 30px;
-  margin: 2px;
+  border-radius: calc(var(--node-size) / 2);
   display: inline-block;
-  border: 2px solid transparent;
   float: left;
   cursor: default;
 }
 
 .node-white {
   background-color: white;
-  border-color: white;
 }
 
 .node-black {
   background-color: black;
-  border-color: black;
 }
 
 .node-last:before {
@@ -115,16 +122,13 @@
 
 .board-purple .node-white {
   background-color: var(--pink);
-  border-color: var(--pink);
 }
 
 .board-purple .node-black {
   background-color: var(--dark-purple);
-  border-color: var(--dark-purple);
 }
 
 .node-last:before {
-  border-color: var(--lightest-purple);
 }
 
 .player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
