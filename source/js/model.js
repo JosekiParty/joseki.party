@@ -34,9 +34,10 @@ export default function model(game, color) {
     Game = Game.play(Weiqi[COLOR], [y,x])
     if (color == 'black') {
       gameState.turn = 'white'
-    } else if (color == 'white') {
+    } else {
       gameState.turn = 'black'
     }
+    gameState.last = [y,x]
     gameState.goban = Game.getBoard().toArray()
     gameState.history[gameState.history.length] = {y: y, x:x, color: COLOR}
     gameState.history.length = gameState.history.length + 1
