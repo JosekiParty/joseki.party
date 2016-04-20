@@ -17,9 +17,9 @@ function create (game) {
   gameServer.child(game.name).update({
       name: game.name,
       joined: {
-        black: isBlack
+        black: isBlack,
         white: isWhite
-      }
+      },
       pass: {
         black: false,
         white: false
