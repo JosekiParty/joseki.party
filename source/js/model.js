@@ -13,6 +13,7 @@ export default function model(game, color) {
   bus.on('game:play', play)
   bus.on('game:pass', pass)
   bus.on('game:resign', resign)
+  bus.on('game:copy-url', copy)
 
   var gameServer = new Firebase(`https://joseki-party.firebaseio.com/${game}`)
   var gameState
@@ -26,11 +27,8 @@ export default function model(game, color) {
     bus.emit('game:render', gameState)
   }
 
-  function play (node) {
+  function play (x, y) {
     let COLOR = color.toUpperCase()
-    let x = parseInt(node.getAttribute('data-x'))
-    let y = parseInt(node.getAttribute('data-y'))
-    console.log(COLOR)
     Game = Game.play(Weiqi[COLOR], [y,x])
     gameState.goban = Game.getBoard().toArray()
     gameState.history[gameState.history.length] = {y: y, x:x, color: COLOR}
@@ -44,5 +42,14 @@ export default function model(game, color) {
 
   function resign (data) {
     console.log(gameState)
+  }
+
+  function copy (input) {
+    try {
+      input.select()
+      document.execCommand('copy')
+    } catch (e) {
+      console.log('copy to clipboard not supported');
+    }
   }
 }

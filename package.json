@@ -61,6 +61,7 @@
     "surge": "^0.17.7"
   },
   "dependencies": {
+    "dom-matches": "^2.0.0",
     "firebase": "^2.4.2",
     "form-serialize": "^0.7.1",
     "route-matcher": "^0.1.0",

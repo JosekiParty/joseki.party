@@ -51,3 +51,21 @@ select:hover, select:focus {
   color: var(--purple);
   outline: none;
 }
+
+.input-text {
+  background-color: var(--lightest-purple);
+  border-radius: 1.5em;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  padding: .75em 1em;
+  box-sizing: border-box;
+  border: 1px solid var(--lightest-purple);
+  color: var(--dark-purple);
+}
+
+.input-text:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+

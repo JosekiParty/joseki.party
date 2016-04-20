@@ -1,9 +1,10 @@
 import bus from './lib/bus'
 import generateName from './lib/generate-name'
 import serialize from 'form-serialize'
+import matches from 'dom-matches'
 
 // Create Game form submissions
-document.querySelector('.js-new-game-form').addEventListener('submit', (e) => {
+document.querySelector('.js-new-game-form').addEventListener('submit', e => {
   e.preventDefault()
   let game = serialize(e.target, {hash: true})
   game.komi = parseInt(game.komi)
@@ -13,9 +14,23 @@ document.querySelector('.js-new-game-form').addEventListener('submit', (e) => {
   bus.emit('game:new', game)
 })
 
-document.querySelector('.js-new-game').addEventListener('click', (e) => {
+document.querySelector('.js-new-game').addEventListener('click', e => {
   e.preventDefault
   let name = generateName()
   console.log(`/${name}/`)
   history.pushState({}, name, `/${name}/`);
+})
+
+document.querySelector('.js-board').addEventListener('click', e => {
+  e.preventDefault()
+  if (matches(e.target, '.js-node')) {
+    let x = parseInt(e.target.getAttribute('data-x'))
+    let y = parseInt(e.target.getAttribute('data-y'))
+    bus.emit('game:play', x, y)
+  }
+
+  if (matches(e.target, '.js-invite-btn')) {
+    let input = document.querySelector('.js-invite-input')
+    bus.emit('game:copy-url', input)
+  }
 })

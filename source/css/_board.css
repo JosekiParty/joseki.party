@@ -68,6 +68,32 @@
   cursor: pointer;
 }
 
+/* invite */
+.board-invite {
+  max-width: 20em;
+  color: var(--light-purple);
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: -5.5rem auto 0 auto;
+  z-index: 12;
+  padding-left: .5em;
+}
+
+.board-invite-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: .75em;
+}
+
+.board-invite-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-left: -.5em;
+}
+
 /* purple drank/sizzurp theme */
 .board-purple {
   background-image: url('13x13-purple.svg');
