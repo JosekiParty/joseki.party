@@ -24,6 +24,7 @@ export default function model(game, color) {
 
   function getState (state) {
     gameState = state.val()
+    gameState.me = color
     Game = hydrate(gameState)
     bus.emit('game:render', gameState)
   }
