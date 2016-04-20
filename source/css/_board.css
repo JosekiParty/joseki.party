@@ -95,6 +95,10 @@
   margin-left: -.5em;
 }
 
+.board-full .board-invite {
+  display: none;
+}
+
 .watching .node {
   pointer-events: none;
 }
