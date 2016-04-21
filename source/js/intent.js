@@ -40,7 +40,11 @@ document.querySelector('.js-board').addEventListener('click', e => {
     bus.emit('game:resign', 'black')
     console.log('black resigned')
   }
-  if (matches (e.target, '.js-resign-confirm-black')) {
+  if (matches(e.target, '.js-black-cancel-resign')){
+    bus.emit('game:resign:cancel', 'black')
+    console.log('black canceled resign')
+  }
+  if (matches (e.target, '.js-confirm-resign-black')) {
     bus.emit('game:resign:confirm', 'black')
     console.log('black confirmed resign')
   }
@@ -52,7 +56,11 @@ document.querySelector('.js-board').addEventListener('click', e => {
     bus.emit('game:resign', 'white')
     console.log('white resigned')
   }
-  if (matches (e.target, '.js-resign-confirm-white')) {
+  if (matches(e.target, '.js-white-cancel-resign')){
+    bus.emit('game:resign:cancel', 'white')
+    console.log('white canceled resign')
+  }
+  if (matches (e.target, '.js-confirm-resign-white')) {
     bus.emit('game:resign:confirm', 'white')
     console.log('white confirmed resign')
   }

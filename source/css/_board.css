@@ -118,6 +118,7 @@
 }
 
 .player {
+  width: 14vw;
   box-sizing: border-box;
   height: var(--board-width);
   padding: 2rem;
@@ -138,6 +139,7 @@
 
 .player-marker.player-white {
   background-color: var(--pink);
+  margin-left: auto;
 }
 
 .player-marker.player-black {
@@ -168,11 +170,41 @@
   background-color: var(--dark-purple);
 }
 
+.white-controls, .black-controls {
+  display: flex;
+  flex-grow: 1;
+}
+
+.player-white .black-controls {
+  display: none;
+}
+.player-black .white-controls {
+  display: none;
+}
+
+.pass-resign-white, .resign-confirm-white,
 .pass-resign, .resign-confirm {
   display: flex;
   flex-grow: 1;
 }
 
+.pass-resign-white, .resign-confirm-white {
+  justify-content: flex-end;
+}
+
+.btn-confirm {
+  margin-right: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-resign {
+  margin-left: 1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .btn-pass, .btn-resign, .btn-confirm {
+  white-space: nowrap;
   align-self: flex-end;
 }

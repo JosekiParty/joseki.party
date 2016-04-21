@@ -24,13 +24,13 @@ function render (game) {
 
     <section class="player text-left">
       <span class="player-marker player-black"></span>
-      <div class="pass-resign js-black-pass-resign">
-        <button class="btn btn-small btn-pass js-pass-black">Pass</button><button class="btn btn-small btn-resign js-resign-black">Resign</button>
-      </div>
-
-      <div class="resign-confirm js-black-resign-confirm" hidden>
-        Really?
-        <button class="btn btn-small btn-confirm js-black-cancel-resign">No</button><button class="btn btn-small btn-resign js-confirm-resign-black">Yes</button>
+      <div class="black-controls">
+        <div class="pass-resign js-black-pass-resign">
+          <button class="btn btn-small btn-pass js-pass-black">Pass</button><button class="btn btn-small btn-resign js-resign-black">Resign</button>
+        </div>
+        <div class="resign-confirm js-black-resign-confirm" hidden>
+          <button class="btn btn-small btn-confirm js-black-cancel-resign">No, Wait, Don't</button><button class="btn btn-small btn-resign js-confirm-resign-black">Yes Really</button>
+        </div>
       </div>
     </section>
 
@@ -47,6 +47,14 @@ function render (game) {
 
     <section class="player">
       <span class="player-marker player-white"></span>
+      <div class="white-controls">
+        <div class="pass-resign-white js-white-pass-resign">
+          <button class="btn btn-small btn-pass js-pass-white">Pass</button><button class="btn btn-small btn-resign js-resign-white">Resign</button>
+        </div>
+        <div class="resign-confirm-white js-white-resign-confirm" hidden>
+          <button class="btn btn-small btn-confirm js-white-cancel-resign">No, Wait, Don't</button><button class="btn btn-small btn-resign js-confirm-resign-white">Yes Really</button>
+        </div>
+      </div>
     </section>
   `
 }

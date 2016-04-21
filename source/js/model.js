@@ -13,7 +13,7 @@ export default function model(game, color) {
   bus.on('game:joined', playerJoin)
   bus.on('game:play', play)
   bus.on('game:pass', pass)
-  bus.on('game:resign', resign)
+  bus.on('game:resign:confirm', resign)
   bus.on('game:copy-url', copy)
 
   var gameServer = new Firebase(`https://joseki-party.firebaseio.com/${game}`)
@@ -53,12 +53,42 @@ export default function model(game, color) {
     }
   }
 
-  function pass (data) {
-    console.log(gameState)
+  function pass (color) {
+    console.log(`${color} passed`)
+    let COLOR = color.toUpperCase()
+    Game = Game.pass(Weiqi[COLOR])
+    if (color == 'white') {
+      gameState.pass.white = true
+    } else {
+      gameState.pass.black = true
+    }
+    gameState.history[gameState.history.length] = {pass:true, color: COLOR}
+    gameState.history.length = gameState.history.length + 1
+    gameState.last = 'pass'
+    gameServer.update(gameState)
   }
 
-  function resign (data) {
-    console.log(gameState)
+  function resign (color) {
+    if (color == 'black') {
+      Game = Game.pass(Weiqi.BLACK)
+      Game = Game.pass(Weiqi.WHITE)
+      gameState.history[gameState.history.length] = {pass:true, color: 'BLACK'}
+      gameState.history.length = gameState.history.length + 1
+      gameState.history[gameState.history.length] = {pass:true, color: 'WHITE'}
+      gameState.history.length = gameState.history.length + 1
+      gameState.resign.black = true
+    } else {
+      Game = Game.pass(Weiqi.WHITE)
+      Game = Game.pass(Weiqi.BLACK)
+      gameState.history[gameState.history.length] = {pass:true, color: 'WHITE'}
+      gameState.history.length = gameState.history.length + 1
+      gameState.history[gameState.history.length] = {pass:true, color: 'BLACK'}
+      gameState.history.length = gameState.history.length + 1
+      gameState.resign.white = true
+    }
+    console.log(`${color} resigned for real`)
+    gameState.last = 'resign'
+    gameServer.update(gameState)
   }
 
   function copy (input) {
