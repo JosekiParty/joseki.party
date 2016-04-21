@@ -6,6 +6,7 @@
 
 /* The background lines for the board */
 .board-wrap {
+  position: relative;
   display: flex;
   align-items: center;
   min-height: 100vh;
@@ -116,7 +117,33 @@
   pointer-events: none;
 }
 
+.player {
+  box-sizing: border-box;
+  height: var(--board-width);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
 /* purple drank/sizzurp theme */
+.player-marker {
+  width: calc(var(--board-width) / 12);
+  height: calc(var(--board-width) / 12);
+  box-sizing: border-box;
+  border-radius: calc(var(--board-width) / 6);;
+  display: inline-block;
+  float: left;
+  cursor: default;
+}
+
+.player-marker.player-white {
+  background-color: var(--pink);
+}
+
+.player-marker.player-black {
+  background-color: var(--dark-purple);
+}
+
 .board-purple {
   background-image: url('13x13-purple.svg');
 }

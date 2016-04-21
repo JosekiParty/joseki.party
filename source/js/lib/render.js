@@ -21,6 +21,11 @@ function render (game) {
   console.log(game)
   let them = game.me === 'white' ? 'black' : 'white'
   document.querySelector('.js-board').innerHTML = `
+
+    <section class="player">
+     <span class="player-marker player-black"></span>
+    </section>
+
     <section class="board board-purple ${full} board-turn-${game.turn} board-${game.size}x${game.size}">
       <label class="board-invite">
         Invite your opponent:
@@ -30,6 +35,10 @@ function render (game) {
         </div>
       </label>
       ${rows.join('')}
+    </section>
+
+    <section class="player">
+      <span class="player-marker player-white"></span>
     </section>
   `
 }
