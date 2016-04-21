@@ -22,6 +22,30 @@ label {
   font-size: 1.25rem;
 }
 
+.btn-small {
+  font-size: .85rem;
+}
+
+.btn-pass {
+  float: left;
+  margin-right: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-confirm {
+  pointer-events: none;
+  margin-right: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-resign {
+  margin-left: 1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .btn-center {
   margin-right: auto;
   margin-left: auto;

@@ -58,3 +58,12 @@
   max-width: 42em;
   display: table;
 }
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}

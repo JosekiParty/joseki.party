@@ -22,8 +22,16 @@ function render (game) {
   let them = game.me === 'white' ? 'black' : 'white'
   document.querySelector('.js-board').innerHTML = `
 
-    <section class="player">
-     <span class="player-marker player-black"></span>
+    <section class="player text-left">
+      <span class="player-marker player-black"></span>
+      <div class="pass-resign js-black-pass-resign">
+        <button class="btn btn-small btn-pass js-pass-black">Pass</button><button class="btn btn-small btn-resign js-resign-black">Resign</button>
+      </div>
+
+      <div class="resign-confirm js-black-resign-confirm" hidden>
+        Really?
+        <button class="btn btn-small btn-confirm js-black-cancel-resign">No</button><button class="btn btn-small btn-resign js-confirm-resign-black">Yes</button>
+      </div>
     </section>
 
     <section class="board board-purple ${full} board-turn-${game.turn} board-${game.size}x${game.size}">

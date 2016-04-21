@@ -160,11 +160,19 @@
   background-color: var(--blue);
 }
 
-
 .player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
   background-color: var(--pink);
 }
 
 .player-black .board-purple.board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
   background-color: var(--dark-purple);
+}
+
+.pass-resign, .resign-confirm {
+  display: flex;
+  flex-grow: 1;
+}
+
+.btn-pass, .btn-resign, .btn-confirm {
+  align-self: flex-end;
 }

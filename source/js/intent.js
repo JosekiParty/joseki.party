@@ -28,9 +28,32 @@ document.querySelector('.js-board').addEventListener('click', e => {
     let y = parseInt(e.target.getAttribute('data-y'))
     bus.emit('game:play', x, y)
   }
-
   if (matches(e.target, '.js-invite-btn')) {
     let input = document.querySelector('.js-invite-input')
     bus.emit('game:copy-url', input)
+  }
+  if (matches (e.target, '.js-pass-black')) {
+    bus.emit('game:pass', 'black')
+    console.log('black passed')
+  }
+  if (matches (e.target, '.js-resign-black')) {
+    bus.emit('game:resign', 'black')
+    console.log('black resigned')
+  }
+  if (matches (e.target, '.js-resign-confirm-black')) {
+    bus.emit('game:resign:confirm', 'black')
+    console.log('black confirmed resign')
+  }
+  if (matches (e.target, '.js-pass-white')) {
+    bus.emit('game:pass', 'white')
+    console.log('white passed')
+  }
+  if (matches (e.target, '.js-resign-white')) {
+    bus.emit('game:resign', 'white')
+    console.log('white resigned')
+  }
+  if (matches (e.target, '.js-resign-confirm-white')) {
+    bus.emit('game:resign:confirm', 'white')
+    console.log('white confirmed resign')
   }
 })
