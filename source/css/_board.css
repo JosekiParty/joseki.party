@@ -163,6 +163,21 @@
   background-color: var(--blue);
 }
 
+.komi {
+  text-align: center;
+  position: absolute;
+  right: 1.5vw;
+  width: 0.85vw;
+  height: 0.85vw;
+  font-size: 0.85vw;
+  background-color: var(--blue);
+  color: white;
+  padding: .75em 1em;
+  border-radius: 2vw;
+  border: 1px solid var(--purple);
+  font-family: var(--font-family);
+}
+
 .player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
   background-color: var(--pink);
 }

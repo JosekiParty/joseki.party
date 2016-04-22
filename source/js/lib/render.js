@@ -48,7 +48,7 @@ function render (game) {
     </section>
 
     <section class="player">
-      <span class="komi"></span>
+      <span class="komi">${game.komi}</span>
       <span class="player-marker player-white"></span>
       <span class="player-white-pass-indicator js-white-pass-indicator" hidden>Pass</span>
 
