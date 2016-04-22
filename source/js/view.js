@@ -5,7 +5,8 @@ import example from './lib/example'
 bus.on('view:set', view)
 bus.on('game:resign', resign)
 bus.on('game:resign:cancel', unresign)
-bus.on('game:pass', pass)
+bus.on('game:pass:flag', pass)
+bus.on('game:pass:unflag', unpass)
 bus.on('game:end', endGame)
 
 function hideViews () {
@@ -25,7 +26,12 @@ function view (options) {
 }
 
 function pass (color) {
+  console.log(`show flag for ${color} pass`)
   document.querySelector(`.js-${color}-pass-indicator`).removeAttribute('hidden')
+}
+function unpass (color) {
+  console.log(`show flag for ${color} pass`)
+  document.querySelector(`.js-${color}-pass-indicator`).setAttribute('hidden', 'hidden')
 }
 
 function resign (color) {

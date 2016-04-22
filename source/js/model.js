@@ -17,40 +17,96 @@ export default function model(game, color) {
   bus.on('game:copy-url', copy)
 
   var gameServer = new Firebase(`https://joseki-party.firebaseio.com/${game}`)
+  var COLOR = color.toUpperCase()
   var gameState
   var Game
 
   // set listener
-  gameServer.on('value', getState)
+  gameServer.on('value', getGame)
   // unset listener
-  // gameServer.off('value', getState)
+  // gameServer.off('value', getGame)
 
-  function getState (state) {
+  function getGame (state) {
     gameState = state.val()
     gameState.me = color
+    console.log(`state change: `, gameState)
     Game = hydrate(gameState)
     bus.emit('game:render', gameState)
     console.log(gameState.pass)
-    if (gameState.pass.black) {
-      bus.emit('game:pass', 'black')
+    if (gameState.pass.black && !gameState.pass.white && gameState.turn == 'black') {
+      gameState.pass.black = false
+      bus.emit('game:pass:unflag', 'black')
+    } else if (gameState.pass.black) {
+      bus.emit('game:pass:flag', 'black')
+    }
+    if (gameState.pass.white && !gameState.pass.black && gameState.turn == 'white') {
+      gameState.pass.white = false
+      bus.emit('game:pass:unflag', 'white')
     } else if (gameState.pass.white) {
-      bus.emit('game:pass', 'white')
+      bus.emit('game:pass:flag', 'white')
+    }
+    if (gameState.pass.white && gameState.pass.black) {
+      destroyGame()
+      bus.emit('game:end', gameState)
     }
   }
 
+  function updateGame (state) {
+    gameServer.update(state)
+  }
+
+  function destroyGame () {
+    console.log('plz destroy')
+    // gameServer.off('value', getGame)
+  }
+
   function play (x, y) {
-    let COLOR = color.toUpperCase()
     Game = Game.play(Weiqi[COLOR], [y,x])
+    setLastMove([y,x])
+    setGoban()
+    setHistory({
+      y: y, x:x, color: COLOR
+    })
+    updateGame(gameState)
+  }
+
+  function pass (color) {
+    console.log(`pass function sees ${color} pass`)
+    Game = Game.pass(Weiqi[COLOR])
+    setLastMove('pass')
+    setGoban()
+    setHistory({
+      pass: true, color: COLOR
+    })
+    markPass(color)
+    updateGame(gameState)
+  }
+
+  function markPass(color) {
+    console.log(`mark a pass for ${color}`)
+    gameState.pass[color] = true
+  }
+
+  function resign (color) {
+    console.log(`${color} resigned because they're a whiny baby`)
+  }
+
+  function setLastMove (move) {
     if (color == 'black') {
       gameState.turn = 'white'
     } else {
       gameState.turn = 'black'
     }
-    gameState.last = [y,x]
+    gameState.last = move
+  }
+
+  function setGoban () {
     gameState.goban = Game.getBoard().toArray()
-    gameState.history[gameState.history.length] = {y: y, x:x, color: COLOR}
+  }
+
+  function setHistory (move) {
+    gameState.history[gameState.history.length] = move
     gameState.history.length = gameState.history.length + 1
-    gameServer.update(gameState)
   }
 
   function playerJoin (color) {
@@ -59,44 +115,6 @@ export default function model(game, color) {
     } else if (color == 'white') {
       gameServer.child('joined').update({white: true})
     }
-  }
-
-  function pass (color) {
-    console.log(`the model sees that ${color} passed`)
-    let COLOR = color.toUpperCase()
-    Game = Game.pass(Weiqi[COLOR])
-    console.log(`set ${color} pass to true`)
-    gameState.pass[color] = true
-    gameState.history[gameState.history.length] = {pass:true, color: COLOR}
-    gameState.history.length = gameState.history.length + 1
-    gameState.last = 'pass'
-    // if (gameState.pass.black == true && gameState.pass.black == true) {
-    //   bus.emit('game:end', Game)
-    // }
-    gameServer.update(gameState)
-  }
-
-  function resign (color) {
-    if (color == 'black') {
-      Game = Game.pass(Weiqi.BLACK)
-      Game = Game.pass(Weiqi.WHITE)
-      gameState.history[gameState.history.length] = {pass:true, color: 'BLACK'}
-      gameState.history.length = gameState.history.length + 1
-      gameState.history[gameState.history.length] = {pass:true, color: 'WHITE'}
-      gameState.history.length = gameState.history.length + 1
-      gameState.resign.black = true
-    } else {
-      Game = Game.pass(Weiqi.WHITE)
-      Game = Game.pass(Weiqi.BLACK)
-      gameState.history[gameState.history.length] = {pass:true, color: 'WHITE'}
-      gameState.history.length = gameState.history.length + 1
-      gameState.history[gameState.history.length] = {pass:true, color: 'BLACK'}
-      gameState.history.length = gameState.history.length + 1
-      gameState.resign.white = true
-    }
-    console.log(`${color} resigned for real`)
-    gameState.last = 'resign'
-    gameServer.update(gameState)
   }
 
   function copy (input) {

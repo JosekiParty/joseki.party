@@ -17,7 +17,6 @@ document.querySelector('.js-new-game-form').addEventListener('submit', e => {
 document.querySelector('.js-new-game').addEventListener('click', e => {
   e.preventDefault
   let name = generateName()
-  console.log(`/${name}/`)
   history.pushState({}, name, `/${name}/`);
 })
 
@@ -34,34 +33,26 @@ document.querySelector('.js-board').addEventListener('click', e => {
   }
   if (matches (e.target, '.js-pass-black')) {
     bus.emit('game:pass', 'black')
-    console.log('black passed')
   }
   if (matches (e.target, '.js-resign-black')) {
     bus.emit('game:resign', 'black')
-    console.log('black resigned')
   }
   if (matches(e.target, '.js-black-cancel-resign')){
     bus.emit('game:resign:cancel', 'black')
-    console.log('black canceled resign')
   }
   if (matches (e.target, '.js-confirm-resign-black')) {
     bus.emit('game:resign:confirm', 'black')
-    console.log('black confirmed resign')
   }
   if (matches (e.target, '.js-pass-white')) {
     bus.emit('game:pass', 'white')
-    console.log('white passed')
   }
   if (matches (e.target, '.js-resign-white')) {
     bus.emit('game:resign', 'white')
-    console.log('white resigned')
   }
   if (matches(e.target, '.js-white-cancel-resign')){
     bus.emit('game:resign:cancel', 'white')
-    console.log('white canceled resign')
   }
   if (matches (e.target, '.js-confirm-resign-white')) {
     bus.emit('game:resign:confirm', 'white')
-    console.log('white confirmed resign')
   }
 })
