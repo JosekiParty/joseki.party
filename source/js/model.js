@@ -20,7 +20,10 @@ export default function model(game, color) {
   var gameState
   var Game
 
+  // set listener
   gameServer.on('value', getState)
+  // unset listener
+  // gameServer.off('value', getState)
 
   function getState (state) {
     gameState = state.val()
