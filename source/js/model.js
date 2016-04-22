@@ -27,6 +27,12 @@ export default function model(game, color) {
     gameState.me = color
     Game = hydrate(gameState)
     bus.emit('game:render', gameState)
+    console.log(gameState.pass)
+    if (gameState.pass.black) {
+      bus.emit('game:pass', 'black')
+    } else if (gameState.pass.white) {
+      bus.emit('game:pass', 'white')
+    }
   }
 
   function play (x, y) {
@@ -45,7 +51,6 @@ export default function model(game, color) {
   }
 
   function playerJoin (color) {
-    console.log(color)
     if (color == 'black') {
       gameServer.child('joined').update({black: true})
     } else if (color == 'white') {
@@ -54,17 +59,17 @@ export default function model(game, color) {
   }
 
   function pass (color) {
-    console.log(`${color} passed`)
+    console.log(`the model sees that ${color} passed`)
     let COLOR = color.toUpperCase()
     Game = Game.pass(Weiqi[COLOR])
-    if (color == 'white') {
-      gameState.pass.white = true
-    } else {
-      gameState.pass.black = true
-    }
+    console.log(`set ${color} pass to true`)
+    gameState.pass[color] = true
     gameState.history[gameState.history.length] = {pass:true, color: COLOR}
     gameState.history.length = gameState.history.length + 1
     gameState.last = 'pass'
+    // if (gameState.pass.black == true && gameState.pass.black == true) {
+    //   bus.emit('game:end', Game)
+    // }
     gameServer.update(gameState)
   }
 

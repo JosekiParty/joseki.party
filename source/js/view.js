@@ -6,6 +6,7 @@ bus.on('view:set', view)
 bus.on('game:resign', resign)
 bus.on('game:resign:cancel', unresign)
 bus.on('game:pass', pass)
+bus.on('game:end', endGame)
 
 function hideViews () {
   var views = document.querySelectorAll('.js-view')
@@ -34,4 +35,8 @@ function resign (color) {
 function unresign (color) {
   document.querySelector(`.js-${color}-pass-resign`).removeAttribute('hidden')
   document.querySelector(`.js-${color}-resign-confirm`).setAttribute('hidden', 'hidden')
+}
+function endGame (game) {
+  console.log(`game over!`)
+  console.log(game)
 }

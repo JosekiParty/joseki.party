@@ -18,7 +18,6 @@ function render (game) {
     return `<div class="board-row">${row.join('')}</div>`
   })
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
-  console.log(game)
   let them = game.me === 'white' ? 'black' : 'white'
   document.querySelector('.js-board').innerHTML = `
 
