@@ -118,6 +118,7 @@
 }
 
 .player {
+  position: relative;
   width: 14vw;
   box-sizing: border-box;
   height: var(--board-width);
@@ -170,9 +171,33 @@
   background-color: var(--dark-purple);
 }
 
+.player-black-pass-indicator, .player-white-pass-indicator {
+  display: inline-block;
+  position: absolute;
+  top: 25vw;
+  width: 2em;
+  font-size: 2.2vw;
+  background-color: var(--blue);
+  color: white;
+  padding: .75em 1em;
+  border-radius: 1.5em;
+  border: 1px solid var(--purple);
+  font-family: var(--font-family);
+}
+
+.player-black-pass-indicator {
+  left: 13vw;
+}
+.player-white-pass-indicator {
+  right: 13vw;
+}
+
 .white-controls, .black-controls {
   display: flex;
   flex-grow: 1;
+}
+.white-controls {
+  justify-content: flex-end;
 }
 
 .player-white .black-controls {

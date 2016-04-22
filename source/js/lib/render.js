@@ -24,6 +24,8 @@ function render (game) {
 
     <section class="player text-left">
       <span class="player-marker player-black"></span>
+      <span class="player-black-pass-indicator js-black-pass-indicator" hidden>Pass</span>
+
       <div class="black-controls">
         <div class="pass-resign js-black-pass-resign">
           <button class="btn btn-small btn-pass js-pass-black">Pass</button><button class="btn btn-small btn-resign js-resign-black">Resign</button>
@@ -46,7 +48,10 @@ function render (game) {
     </section>
 
     <section class="player">
+      <span class="komi"></span>
       <span class="player-marker player-white"></span>
+      <span class="player-white-pass-indicator js-white-pass-indicator" hidden>Pass</span>
+
       <div class="white-controls">
         <div class="pass-resign-white js-white-pass-resign">
           <button class="btn btn-small btn-pass js-pass-white">Pass</button><button class="btn btn-small btn-resign js-resign-white">Resign</button>
