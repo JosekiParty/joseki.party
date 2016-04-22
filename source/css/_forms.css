@@ -22,6 +22,17 @@ label {
   font-size: 1.25rem;
 }
 
+.btn-small {
+  font-size: .85rem;
+}
+
+.btn-pass {
+  float: left;
+  margin-right: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .btn-center {
   margin-right: auto;
   margin-left: auto;

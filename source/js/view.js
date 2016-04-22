@@ -3,6 +3,11 @@ import render from './lib/render'
 import example from './lib/example'
 
 bus.on('view:set', view)
+bus.on('game:resign', resign)
+bus.on('game:resign:cancel', unresign)
+bus.on('game:pass:flag', pass)
+bus.on('game:pass:unflag', unpass)
+bus.on('game:end', endGame)
 
 function hideViews () {
   var views = document.querySelectorAll('.js-view')
@@ -18,4 +23,26 @@ function view (options) {
     render(example)
   }
   document.querySelector(`[data-view=${options.section}]`).removeAttribute('hidden')
+}
+
+function pass (color) {
+  console.log(`show flag for ${color} pass`)
+  document.querySelector(`.js-${color}-pass-indicator`).removeAttribute('hidden')
+}
+function unpass (color) {
+  console.log(`show flag for ${color} pass`)
+  document.querySelector(`.js-${color}-pass-indicator`).setAttribute('hidden', 'hidden')
+}
+
+function resign (color) {
+  document.querySelector(`.js-${color}-pass-resign`).setAttribute('hidden', 'hidden')
+  document.querySelector(`.js-${color}-resign-confirm`).removeAttribute('hidden')
+}
+function unresign (color) {
+  document.querySelector(`.js-${color}-pass-resign`).removeAttribute('hidden')
+  document.querySelector(`.js-${color}-resign-confirm`).setAttribute('hidden', 'hidden')
+}
+function endGame (game) {
+  console.log(`game over!`)
+  console.log(game)
 }

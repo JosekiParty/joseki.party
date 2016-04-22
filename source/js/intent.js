@@ -17,7 +17,6 @@ document.querySelector('.js-new-game-form').addEventListener('submit', e => {
 document.querySelector('.js-new-game').addEventListener('click', e => {
   e.preventDefault
   let name = generateName()
-  console.log(`/${name}/`)
   history.pushState({}, name, `/${name}/`);
 })
 
@@ -28,9 +27,32 @@ document.querySelector('.js-board').addEventListener('click', e => {
     let y = parseInt(e.target.getAttribute('data-y'))
     bus.emit('game:play', x, y)
   }
-
   if (matches(e.target, '.js-invite-btn')) {
     let input = document.querySelector('.js-invite-input')
     bus.emit('game:copy-url', input)
+  }
+  if (matches (e.target, '.js-pass-black')) {
+    bus.emit('game:pass', 'black')
+  }
+  if (matches (e.target, '.js-resign-black')) {
+    bus.emit('game:resign', 'black')
+  }
+  if (matches(e.target, '.js-black-cancel-resign')){
+    bus.emit('game:resign:cancel', 'black')
+  }
+  if (matches (e.target, '.js-confirm-resign-black')) {
+    bus.emit('game:resign:confirm', 'black')
+  }
+  if (matches (e.target, '.js-pass-white')) {
+    bus.emit('game:pass', 'white')
+  }
+  if (matches (e.target, '.js-resign-white')) {
+    bus.emit('game:resign', 'white')
+  }
+  if (matches(e.target, '.js-white-cancel-resign')){
+    bus.emit('game:resign:cancel', 'white')
+  }
+  if (matches (e.target, '.js-confirm-resign-white')) {
+    bus.emit('game:resign:confirm', 'white')
   }
 })
