@@ -26,16 +26,18 @@ function view (options) {
 }
 
 function pass (color) {
-  console.log(`show flag for ${color} pass`)
   document.querySelector(`.js-${color}-pass-indicator`).removeAttribute('hidden')
 }
 function unpass (color) {
-  console.log(`show flag for ${color} pass`)
   document.querySelector(`.js-${color}-pass-indicator`).setAttribute('hidden', 'hidden')
 }
 
-function resign (color) {
+function hideActions (color) {
   document.querySelector(`.js-${color}-pass-resign`).setAttribute('hidden', 'hidden')
+}
+
+function resign (color) {
+  hideActions(color)
   document.querySelector(`.js-${color}-resign-confirm`).removeAttribute('hidden')
 }
 function unresign (color) {
@@ -43,6 +45,12 @@ function unresign (color) {
   document.querySelector(`.js-${color}-resign-confirm`).setAttribute('hidden', 'hidden')
 }
 function endGame (game) {
-  console.log(`game over!`)
-  console.log(game)
+  window.setInterval(endScreen, 1000);
+}
+function endScreen () {
+  unpass('black')
+  hideActions('black')
+  unpass('white')
+  hideActions('white')
+  document.querySelector('.js-tidy-flag').removeAttribute('hidden')
 }
