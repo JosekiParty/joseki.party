@@ -248,3 +248,44 @@
   white-space: nowrap;
   align-self: flex-end;
 }
+
+.tidy {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  color: var(--pink);
+  z-index: 100;
+}
+
+.score-buttons {
+  bottom: 1rem;
+  width: 100%;
+  position: absolute;
+  align-items: flex-end;
+}
+
+.btn-score {
+  background-color: var(--purple);
+  border: 2px solid white;
+}
+.btn-score:hover {
+  border-color: var(--blue);
+
+}
+.btn-score:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-score:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.score-accepted {
+  background-color: var(--blue);
+  border-color: transparent;
+}

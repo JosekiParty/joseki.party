@@ -55,4 +55,10 @@ document.querySelector('.js-board').addEventListener('click', e => {
   if (matches (e.target, '.js-confirm-resign-white')) {
     bus.emit('game:resign:confirm', 'white')
   }
+  if (matches (e.target, '.js-score-black')) {
+    bus.emit('game:accept:black', 'black')
+  }
+  if (matches (e.target, '.js-score-white')) {
+    bus.emit('game:accept:white', 'white')
+  }
 })
