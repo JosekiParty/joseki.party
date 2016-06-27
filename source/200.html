@@ -1,106 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Joseki 🎉</title>
-    <meta name="description" content="Play Go online for free.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Joseki 🎉">
-    <meta name="twitter:site" content="@paulcpederson">
-    <meta name="twitter:description" content="Play Go online for free.">
-    <!-- TODO twitter card image -->
-    <meta name="twitter:image" content="">
-    <meta property="og:url" content="http://joseki.party">
-    <meta property="og:title" content="Joseki 🎉">
-    <!-- TODO facebook image -->
-    <meta property="og:image" content="desk.jpg">
-    <meta property="og:description" content="Play Go online for free.">
-    <!-- TODO favicon -->
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link type="text/css" rel="stylesheet" href="/app.css">
+---
+template: _layout.html
+block: content
+---
 
-    <!-- Give really old IE browsers a fighting chance -->
-    <!--[if IE]>
-      <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-    <![endif]-->
-  </head>
+<!-- Views -->
 
-  <body>
-  <!-- DOM -->
-    <section class="js-view banner table table-purple" data-view="home" hidden>
-      <div class="banner-copy">
-        <h1 class="banner-title">Joseki Party</h1>
-        <h2 class="banner-tagline">play go online with friends, party time 🎉</h2>
-        <a href="#" class="js-new-game btn btn-large">Start New Game</a>
-      </div>
-    </section>
+<!-- /404 -->
+{% include "./_404.html" %}
 
-    <section class="js-view" data-view="404" hidden>
-      <h1>404 Daaaaawg!</h1>
-    </section>
+<!-- / -->
+{% include "./_introduction.html" %}
 
-    <section class="js-tidy-flag tidy" hidden>
-      <h1>Mark Dead Stones</h1>
-      <div class="score-buttons">
-        <button class="btn btn-score js-score-black">Accept and Score</button>
-        <button class="btn btn-score js-score-white">Accept and Score</button>
-      </div>
-    </section>
+<!-- /:game -->
+{% include "./_new-game.html" %}
 
-    <section class="js-winner-flag" hidden>
-      <h1>Winner!</h1>
-    </section>
-
-    <section class="js-view js-board player-black flex board-wrap" data-view="game" hidden></section>
-
-    <section class="js-view table table-purple" data-view="new" hidden>
-      <div class="table-cell">
-        <div class="panel text-center">
-          <h2 class="leader-0">New Game</h2>
-          <form class="js-new-game-form text-left">
-            <label class="flex">
-              <span class="flex-1">Komi:</span>
-              <select name="komi" class="">
-                <option value="0" selected>No Komi</option>
-                <option value=".5">&frac12;</option>
-                <option value="4">Four</option>
-                <option value="4.5">Four &frac12;</option>
-                <option value="5">Five</option>
-                <option value="5.5">Five &frac12;</option>
-                <option value="6">Six</option>
-                <option value="6.5">Six &frac12;</option>
-                <option value="7">Seven</option>
-                <option value="7.5">Seven &frac12;</option>
-                <option value="8">Eight</option>
-              </select>
-            </label>
-            <label class="flex">
-              <span class="flex-1">Size:</span>
-              <select name="size" class="">
-                <!-- <option value="9">9x9</option> -->
-                <option value="13" selected>13x13</option>
-                <!-- <option value="19">19x19</option> -->
-              </select>
-            </label>
-            <label class="flex">
-              <span class="flex-1">Color:</span>
-              <select name="color" class="">
-                <option value="white" selected>White</option>
-                <option value="black">Black</option>
-              </select>
-            </label>
-            <button type="submit" class="btn btn-large btn-center leader-1">Create Game</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-  <!-- Application JS -->
-    <script src="/app.js"></script>
-
-    <!-- TODO Analytics -->
-  </body>
-
-</html>
+<!-- /:game/:color -->
+{% include "./_game-board.html" %}
