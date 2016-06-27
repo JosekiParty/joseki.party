@@ -6,7 +6,7 @@ import hydrate from '../lib/hydrate-game'
 export function play (x, y, state) {
   Game = hydrate(state.game)
   Game = Game.play(Weiqi[state.player], [y,x])
-  state.game.turn = state.player
+  state.game.turn = getTurn(state.player)
   state.game.last = [y,x]
   state.game.history[state.game.history.length] = {
     y: y, x:x, color: state.player
@@ -16,20 +16,27 @@ export function play (x, y, state) {
   bus.emit('game:write', state.game)
 }
 
-export function pass () {
+export function pass (state) {
   console.log('I pass')
+  Game = hydrate(state.game)
+  Game = Game.play(Weiqi[state.player], [y,x])
+  state.game.turn = getTurn(state.player)
+  state.game.last = 'pass'
+  state.game.history[state.game.history.length] = {
+    pass: true, color: state.player
+  }
+  state.game.pass[color] = true
+  bus.emit('game:write', state.game)
 }
 
 export function resign () {
   console.log('you win')
 }
 
-// THESE ARE INTERNAL HELPER FUNCTIONS
-
-function markPass () {
-  console.log('mark a pass plz')
-}
-
-function playerJoin () {
-  console.log('hey a player joined')
+function getTurn (player) {
+  if (player == 'BLACK') {
+    return 'white'
+  } else {
+    return 'black'
+  }
 }
