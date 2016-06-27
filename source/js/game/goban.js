@@ -2,6 +2,8 @@ import bus from '../lib/bus'
 import matches from 'dom-matches'
 import * as api from './api'
 
+var state = {}
+
 export default function () {
   // Translate User Clicks out to app
   document.querySelector('.js-board').addEventListener('click', e => {
@@ -9,13 +11,22 @@ export default function () {
     if (matches(e.target, '.js-node')) {
       let x = parseInt(e.target.getAttribute('data-x'))
       let y = parseInt(e.target.getAttribute('data-y'))
-      bus.emit('game:play', x, y)
+      bus.emit('game:play', x, y, state)
     }
   })
   // Translate App Events in to component
   bus.on('view:set', handleBoard)
   bus.on('game:change', render)
+  bus.on('game:change', updateGameState)
   bus.on('game:play', api.play)
+}
+
+function updateGameState (game) {
+  state.game = game
+}
+
+function updateStatePlayer (color) {
+  state.player = color
 }
 
 function handleBoard (options) {
@@ -25,6 +36,7 @@ function handleBoard (options) {
     board.classList.remove(`player-black`)
     board.classList.add('watching')
   } else if (options.playing) {
+    updateStatePlayer(options.playing.color.toUpperCase())
     board.classList.remove(`player-white`)
     board.classList.remove(`player-black`)
     board.classList.add(`player-${options.playing.color}`)
