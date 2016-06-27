@@ -46,7 +46,6 @@ function handleBoard (options) {
 }
 
 function render (game) {
-  console.log(`render the goban`, game)
   if (!game) return
   var rows = game.goban.map((r, y) => {
     var row = r.map((n, x) => {
@@ -65,7 +64,8 @@ function render (game) {
   })
 
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
-  let them = game.me === 'white' ? 'black' : 'white'
+  let them = game.joined.white ? 'black' : 'white'
+  console.log(them)
   document.querySelector('.js-board').innerHTML = `
     <section class="board board-purple
                     ${full}

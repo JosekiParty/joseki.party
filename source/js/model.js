@@ -4,10 +4,12 @@ import bus from './lib/bus'
 export default function (options) {
   var players = {}
 
-  if (options.playing.color == 'black') {
-    players.black = true
-  } else if (options.playing.color == 'white') {
-    players.white = true
+  if (options.playing) {
+    if (options.playing.color == 'black') {
+      players.black = true
+    } else if (options.playing.color == 'white') {
+      players.white = true
+    }
   }
 
   var gameServer = new Firebase(`https://joseki-party.firebaseio.com/${options.name}`)

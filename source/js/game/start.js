@@ -30,7 +30,6 @@ function create (game) {
   }
 
   var gameState = {
-    name: game.name,
     joined: {
       black: isBlack,
       white: isWhite
