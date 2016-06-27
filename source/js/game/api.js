@@ -16,21 +16,26 @@ export function play (x, y, state) {
   bus.emit('game:write', state.game)
 }
 
-export function pass (state) {
-  console.log('I pass')
+export function pass (color, state) {
   Game = hydrate(state.game)
-  Game = Game.play(Weiqi[state.player], [y,x])
+  Game = Game.pass(Weiqi[state.player])
   state.game.turn = getTurn(state.player)
   state.game.last = 'pass'
   state.game.history[state.game.history.length] = {
     pass: true, color: state.player
   }
+  state.game.history.length = state.game.history.length + 1
   state.game.pass[color] = true
   bus.emit('game:write', state.game)
 }
 
-export function resign () {
-  console.log('you win')
+export function resign (color, state) {
+  var opponent = getTurn(state.player)
+  pass(state.player, state)
+  state.player = opponent.toUpperCase()
+  pass(opponent, state)
+  state.game.resign[color] = true
+  bus.emit('game:write', state.game)
 }
 
 function getTurn (player) {

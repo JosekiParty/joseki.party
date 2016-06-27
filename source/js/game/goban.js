@@ -15,21 +15,35 @@ export default function () {
       let y = parseInt(e.target.getAttribute('data-y'))
       bus.emit('game:play', x, y, state)
     } else if (matches(e.target, '.js-pass')) {
-      console.log('pass plz')
+      var color = e.target.getAttribute('data-color')
+      bus.emit('game:pass', color, state)
     } else if (matches(e.target, '.js-resign')) {
-      console.log('resign plz')
+      var color = e.target.getAttribute('data-color')
+      bus.emit('game:resign', color, state)
     }
   })
   // Translate App Events in to component
   bus.on('view:set', handleBoard)
   bus.on('game:change', render)
   bus.on('game:change', updateGameState)
+  bus.on('game:change', gameIsOver)
   bus.on('game:play', api.play)
+  bus.on('game:pass', api.pass)
+  bus.on('game:resign', confirmResignation)
+  bus.on('game:quit', api.resign)
 }
 
 function updateGameState (game) {
   state.game = game
   bus.emit('game:write', state.game)
+}
+
+function gameIsOver(game) {
+  if (game.pass.black && game.pass.white) {
+    bus.emit('game:over', game)
+  } else if (game.resign.black || game.resign.white) {
+    bus.emit('game:over', game)
+  }
 }
 
 function updateStatePlayer (color) {
@@ -51,7 +65,12 @@ function handleBoard (options) {
   }
 }
 
+function confirmResignation (color, state) {
+  bus.emit('game:quit', color, state)
+}
+
 function render (game) {
+  console.log(game)
   if (!game) return
   var rows = game.goban.map((r, y) => {
     var row = r.map((n, x) => {
@@ -72,7 +91,6 @@ function render (game) {
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
   let me = document.querySelector('.js-board').getAttribute('data-me')
   let them = me === 'white' ? 'black' : 'white'
-  console.log(me)
   document.querySelector('.js-board').innerHTML = `
     ${player(me)}
     <section class="board board-purple

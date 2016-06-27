@@ -3,7 +3,6 @@ import bus from './lib/bus'
 
 export default function (options) {
   var players = {}
-
   if (options.playing) {
     if (options.playing.color == 'black') {
       players.black = true
@@ -20,6 +19,7 @@ export default function (options) {
 }
 
 function write (gameState) {
+  console.log()
   var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
   gameServer.child(gameState.name).update(gameState)
 }
@@ -31,3 +31,4 @@ function destroy () {
 function broadcast (state) {
   bus.emit('game:change', state.val())
 }
+
