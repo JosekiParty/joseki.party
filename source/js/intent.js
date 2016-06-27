@@ -3,6 +3,13 @@ import generateName from './lib/generate-name'
 import serialize from 'form-serialize'
 import matches from 'dom-matches'
 
+//
+document.querySelector('.js-new-game').addEventListener('click', e => {
+  e.preventDefault
+  let name = generateName()
+  history.pushState({}, name, `/${name}/`);
+})
+
 // Create Game form submissions
 document.querySelector('.js-new-game-form').addEventListener('submit', e => {
   e.preventDefault()
@@ -14,11 +21,6 @@ document.querySelector('.js-new-game-form').addEventListener('submit', e => {
   bus.emit('game:new', game)
 })
 
-document.querySelector('.js-new-game').addEventListener('click', e => {
-  e.preventDefault
-  let name = generateName()
-  history.pushState({}, name, `/${name}/`);
-})
 
 document.querySelector('.js-board').addEventListener('click', e => {
   e.preventDefault()

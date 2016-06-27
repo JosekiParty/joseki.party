@@ -129,12 +129,12 @@
 
 /* purple drank/sizzurp theme */
 .player-marker {
+  margin-top: 25vw;
   width: calc(var(--board-width) / 12);
   height: calc(var(--board-width) / 12);
   box-sizing: border-box;
   border-radius: calc(var(--board-width) / 6);;
   display: inline-block;
-  float: left;
   cursor: default;
 }
 
@@ -147,8 +147,16 @@
   background-color: var(--dark-purple);
 }
 
-.board-purple {
+.board-9x9 {
+  background-image: url('9x9-purple.svg');
+}
+
+.board-13x13 {
   background-image: url('13x13-purple.svg');
+}
+
+.board-19x19 {
+  background-image: url('19x19-purple.svg');
 }
 
 .board-purple .node-white {
