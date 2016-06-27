@@ -1,35 +1,30 @@
 import bus from './lib/bus'
-import render from './lib/render'
-import createGame from './create-game'
-import model from './model'
-import view from './view'
-import intent from './intent'
+import classy from './lib/classy'
+
+// App Level Routing
 import route from './routing'
 
-bus.on('view:set', handleGame)
-bus.on('game:render', render)
+// The data model for handling Firebase
+import model from './model'
 
-var board = document.querySelector('.js-board')
+// Routing Controls View Panels
+import view from './view'
+bus.on('view:set', model)
 
-function handleGame (options) {
-  if (options.watching) {
-    watchGame(options.watching)
-    model(options.watching.game)
-  } else if (options.playing) {
-    playGame(options.playing)
-    model(options.playing.game, options.playing.color)
-    bus.emit('game:joined', options.playing.color)
-  }
-}
+// Create a new Game
+import newGame from './game/new'
+newGame()
 
-function playGame (playing) {
-  board.classList.remove(`player-white`)
-  board.classList.remove(`player-black`)
-  board.classList.add(`player-${playing.color}`)
-}
+// Start a new Game
+import start from './game/start'
+start()
 
-function watchGame (watching) {
-  board.classList.add('watching')
+// The board component itself
+import Goban from './game/goban'
+Goban()
+
+function log (whatever) {
+  console.log(whatever)
 }
 
 route()
