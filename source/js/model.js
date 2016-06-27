@@ -16,14 +16,10 @@ export default function (options) {
   gameServer.on('value', broadcast)
   bus.on('game:write', write)
   bus.on('game:destroy', destroy)
-
-  console.log(players)
-
   gameServer.child('joined').update(players)
 }
 
 function write (gameState) {
-  console.log('create new game plz')
   var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
   gameServer.child(gameState.name).update(gameState)
 }

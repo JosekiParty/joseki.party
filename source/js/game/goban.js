@@ -2,6 +2,7 @@ import bus from '../lib/bus'
 import matches from 'dom-matches'
 import * as api from './api'
 import invite from '../templates/invite-opponent'
+import player from '../templates/player-control'
 
 var state = {}
 
@@ -13,6 +14,10 @@ export default function () {
       let x = parseInt(e.target.getAttribute('data-x'))
       let y = parseInt(e.target.getAttribute('data-y'))
       bus.emit('game:play', x, y, state)
+    } else if (matches(e.target, '.js-pass')) {
+      console.log('pass plz')
+    } else if (matches(e.target, '.js-resign')) {
+      console.log('resign plz')
     }
   })
   // Translate App Events in to component
@@ -42,6 +47,7 @@ function handleBoard (options) {
     board.classList.remove(`player-white`)
     board.classList.remove(`player-black`)
     board.classList.add(`player-${options.playing.color}`)
+    board.setAttribute('data-me', options.playing.color)
   }
 }
 
@@ -64,9 +70,11 @@ function render (game) {
   })
 
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
-  let them = game.joined.white ? 'black' : 'white'
-  console.log(them)
+  let me = document.querySelector('.js-board').getAttribute('data-me')
+  let them = me === 'white' ? 'black' : 'white'
+  console.log(me)
   document.querySelector('.js-board').innerHTML = `
+    ${player(me)}
     <section class="board board-purple
                     ${full}
                     board-turn-${game.turn}
@@ -74,5 +82,6 @@ function render (game) {
       ${rows.join('')}
       ${invite(game, them)}
     </section>
+    ${player(them)}
   `
 }
