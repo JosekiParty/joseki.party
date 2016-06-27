@@ -53,4 +53,5 @@ function endScreen () {
   unpass('white')
   hideActions('white')
   document.querySelector('.js-tidy-flag').removeAttribute('hidden')
+  classy.add(document.querySelector('.js-board'), 'js-remove-dead-stones')
 }

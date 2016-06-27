@@ -61,4 +61,8 @@ document.querySelector('.js-board').addEventListener('click', e => {
   if (matches (e.target, '.js-score-white')) {
     bus.emit('game:accept:white', 'white')
   }
+  if (matches (e.target, '.js-node') && classy.has(document.querySelector('.js-board'), 'js-remove-dead-stones')) {
+    console.log(e.target)
+    // bus.emit('game:accept:white', 'white')
+  }
 })
