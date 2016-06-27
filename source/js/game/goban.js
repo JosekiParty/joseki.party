@@ -1,6 +1,7 @@
 import bus from '../lib/bus'
 import matches from 'dom-matches'
 import * as api from './api'
+import invite from '../templates/invite-opponent'
 
 var state = {}
 
@@ -23,10 +24,11 @@ export default function () {
 
 function updateGameState (game) {
   state.game = game
+  bus.emit('game:write', state.game)
 }
 
 function updateStatePlayer (color) {
-  state.player = color
+  state.player = color.toUpperCase()
 }
 
 function handleBoard (options) {
@@ -36,7 +38,7 @@ function handleBoard (options) {
     board.classList.remove(`player-black`)
     board.classList.add('watching')
   } else if (options.playing) {
-    updateStatePlayer(options.playing.color.toUpperCase())
+    updateStatePlayer(options.playing.color)
     board.classList.remove(`player-white`)
     board.classList.remove(`player-black`)
     board.classList.add(`player-${options.playing.color}`)
@@ -70,6 +72,7 @@ function render (game) {
                     board-turn-${game.turn}
                     board-${game.size}x${game.size}">
       ${rows.join('')}
+      ${invite(game, them)}
     </section>
   `
 }

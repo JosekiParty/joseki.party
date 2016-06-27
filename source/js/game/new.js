@@ -6,7 +6,6 @@ export default function () {
     e.preventDefault
     bus.emit('game:new')
   })
-
     bus.on('game:new', newGame)
 };
 
