@@ -60,7 +60,8 @@
     "rerun-script": "^0.6.0",
     "simplifyify": "^2.0.1",
     "static-site": "^1.2.0",
-    "surge": "^0.17.7"
+    "surge": "^0.17.7",
+    "weiqi": "git+https://github.com/nikolaswise/weiqi.js.git"
   },
   "dependencies": {
     "dom-matches": "^2.0.0",
