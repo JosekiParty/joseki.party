@@ -12,5 +12,6 @@ export default function hydrate (game) {
     }
   }
   window.Game = Game
+  console.log(Weiqi)
   return Game
 }

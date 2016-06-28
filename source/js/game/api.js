@@ -4,6 +4,7 @@ import hydrate from '../lib/hydrate-game'
 
 // THIS IS WEIQI API GOODNESS
 export function play (x, y, state) {
+
   Game = hydrate(state.game)
   Game = Game.play(Weiqi[state.player], [y,x])
   state.game.turn = getTurn(state.player)
@@ -27,6 +28,7 @@ export function pass (color, state) {
   state.game.history.length = state.game.history.length + 1
   state.game.pass[color] = true
   bus.emit('game:write', state.game)
+  window.Game = Game
 }
 
 export function resign (color, state) {
