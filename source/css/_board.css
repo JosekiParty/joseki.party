@@ -204,6 +204,7 @@
 .pass-indicator {
   visibility: hidden;
 }
-.pass-indicator .is-active {
-visibility: visible
+.pass-indicator.player-passed-true {
+  visibility: visible;
+  color: white;
 }

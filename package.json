@@ -61,7 +61,7 @@
     "simplifyify": "^2.0.1",
     "static-site": "^1.2.0",
     "surge": "^0.17.7",
-    "weiqi": "git+https://github.com/nikolaswise/weiqi.js.git"
+    "weiqi": "github:nikolaswise/weiqi.js"
   },
   "dependencies": {
     "dom-matches": "^2.0.0",

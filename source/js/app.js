@@ -23,6 +23,10 @@ start()
 import Goban from './game/goban'
 Goban()
 
+// The player control panel component
+import Player from './game/player'
+Player()
+
 function log (whatever) {
   console.log(whatever)
 }

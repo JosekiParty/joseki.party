@@ -29,7 +29,6 @@ export default function () {
   bus.on('game:change', gameIsOver)
   bus.on('game:play', api.play)
   bus.on('game:pass', api.pass)
-  bus.on('game:resign', confirmResignation)
   bus.on('game:quit', api.resign)
 }
 
@@ -65,12 +64,7 @@ function handleBoard (options) {
   }
 }
 
-function confirmResignation (color, state) {
-  bus.emit('game:quit', color, state)
-}
-
 function render (game) {
-  console.log(game)
   if (!game) return
   var rows = game.goban.map((r, y) => {
     var row = r.map((n, x) => {
@@ -91,8 +85,9 @@ function render (game) {
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
   let me = document.querySelector('.js-board').getAttribute('data-me')
   let them = me === 'white' ? 'black' : 'white'
+  console.log(game)
   document.querySelector('.js-board').innerHTML = `
-    ${player(me)}
+    ${player(me, game.pass[me])}
     <section class="board board-purple
                     ${full}
                     board-turn-${game.turn}
@@ -100,6 +95,6 @@ function render (game) {
       ${rows.join('')}
       ${invite(game, them)}
     </section>
-    ${player(them)}
+    ${player(them, game.pass[them])}
   `
 }

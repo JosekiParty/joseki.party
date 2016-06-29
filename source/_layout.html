@@ -28,6 +28,17 @@
   </head>
 
   <body>
+    <div class="modal-overlay">
+      <div class="modal-content" role="dialog" aria-labelledby="modal" role="dialog">
+        <h3 class='trailer-half'>Are you sure you want to resign?</h3>
+        <p class="text-center">
+            <a href="#" class="btn">Yes, I lost real bad.</a>
+            <a href="#" class="btn btn-clear">No, wait, nevermind.</a>
+        </p>
+
+      </div>
+    </div>
+
     {% block content %}{% endblock %}
     <!-- Application JS -->
     <script src="/app.js"></script>
