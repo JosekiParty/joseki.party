@@ -29,7 +29,6 @@ export default function () {
   bus.on('game:change', gameIsOver)
   bus.on('game:play', api.play)
   bus.on('game:pass', api.pass)
-  bus.on('game:quit', api.resign)
 }
 
 function updateGameState (game) {
@@ -38,6 +37,11 @@ function updateGameState (game) {
 }
 
 function gameIsOver(game) {
+  if (game.resigned) {
+    bus.emit('game:over', game)
+    bus.emit('player:resigned', game.resigned.quitter)
+  }
+
   if (game.pass.black && game.pass.white) {
     bus.emit('game:over', game)
   } else if (game.resign.black || game.resign.white) {
@@ -85,7 +89,6 @@ function render (game) {
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
   let me = document.querySelector('.js-board').getAttribute('data-me')
   let them = me === 'white' ? 'black' : 'white'
-  console.log(game)
   document.querySelector('.js-board').innerHTML = `
     ${player(me, game.pass[me])}
     <section class="board board-purple

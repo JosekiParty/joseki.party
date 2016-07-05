@@ -14,6 +14,7 @@ export default function (options) {
   var gameServer = new Firebase(`https://joseki-party.firebaseio.com/${options.name}`)
   gameServer.on('value', broadcast)
   bus.on('game:write', write)
+  bus.on('game:quit', quit)
   bus.on('game:destroy', destroy)
   gameServer.child('joined').update(players)
 }
@@ -22,6 +23,12 @@ function write (gameState) {
   console.log()
   var gameServer = new Firebase('https://joseki-party.firebaseio.com/');
   gameServer.child(gameState.name).update(gameState)
+}
+
+function quit (color, name) {
+  var quitter  = { quitter: color }
+  var gameServer = new Firebase(`https://joseki-party.firebaseio.com/${name}`)
+  gameServer.child('resigned').update(quitter)
 }
 
 function destroy () {

@@ -2,7 +2,7 @@ export default function (color, pass) {
   return `
     <section class="player">
 
-      <h1 class="text-center pass-indicator player-passed-${true}">Pass</h1>
+      <h1 class="text-center pass-indicator player-passed-${pass}">Pass</h1>
 
       <span class="player-marker player-${color}"></span>
 

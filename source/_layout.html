@@ -28,14 +28,20 @@
   </head>
 
   <body>
-    <div class="modal-overlay">
+    <div class="modal-overlay js-resign-confirm">
       <div class="modal-content" role="dialog" aria-labelledby="modal" role="dialog">
         <h3 class='trailer-half'>Are you sure you want to resign?</h3>
         <p class="text-center">
-            <a href="#" class="btn">Yes, I lost real bad.</a>
-            <a href="#" class="btn btn-clear">No, wait, nevermind.</a>
+            <a href="#" class="btn js-confirm-resignation">Yes, I lost real bad.</a>
+            <a href="#" class="btn btn-clear js-cancel-resignation">No, wait, nevermind.</a>
         </p>
 
+      </div>
+    </div>
+
+    <div class="modal-overlay js-player-resigned">
+      <div class="modal-content" role="dialog" aria-labelledby="modal" role="dialog">
+        <h3 class='trailer-half js-who-quit'></h3>
       </div>
     </div>
 

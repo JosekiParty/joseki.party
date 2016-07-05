@@ -31,13 +31,8 @@ export function pass (color, state) {
   window.Game = Game
 }
 
-export function resign (color, state) {
-  var opponent = getTurn(state.player)
-  pass(state.player, state)
-  state.player = opponent.toUpperCase()
-  pass(opponent, state)
-  state.game.resign[color] = true
-  bus.emit('game:write', state.game)
+export function resign (color, game) {
+  console.log('resign', game, color)
 }
 
 function getTurn (player) {
