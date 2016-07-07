@@ -4,8 +4,7 @@ import hydrate from '../lib/hydrate-game'
 
 // THIS IS WEIQI API GOODNESS
 export function play (x, y, state) {
-
-  Game = hydrate(state.game)
+  var Game = hydrate(state.game)
   Game = Game.play(Weiqi[state.player], [y,x])
   state.game.turn = getTurn(state.player)
   state.game.last = [y,x]
@@ -18,7 +17,7 @@ export function play (x, y, state) {
 }
 
 export function pass (color, state) {
-  Game = hydrate(state.game)
+  var Game = hydrate(state.game)
   Game = Game.pass(Weiqi[state.player])
   state.game.turn = getTurn(state.player)
   state.game.last = 'pass'

@@ -52,16 +52,19 @@ function gameIsOver(game) {
   }
   if (game.pass.black && game.pass.white) {
     bus.emit('game:over', game)
+    document.querySelector('.js-accept-board').removeAttribute('hidden')
+    document.querySelector('.js-board').classList.add('js-game-over')
+    document.querySelector('.js-board').classList.add('game-is-over')
   } else if (game.resign.black || game.resign.white) {
     bus.emit('game:over', game)
   }
-  document.querySelector('.js-board').classList.add('js-game-over')
-  document.querySelector('.js-board').classList.add('game-is-over')
 }
 
 function scoreGame(game) {
-  if (game.acceptBoard.white && game.acceptBoard.black) {
-    api.score(game)
+  if (game.acceptBoard) {
+    if (game.acceptBoard.white && game.acceptBoard.black) {
+      api.score(game)
+    }
   }
 }
 
@@ -140,7 +143,7 @@ function render (game) {
       ${invite(game, them)}
     </section>
     <section class="js-accept-section">
-      <button class="btn btn-clear js-accept-board" data-player="${me}">Accept</button>
+      <button class="btn btn-clear js-accept-board" data-player="${me}" hidden>Accept</button>
       <span class="btn btn-small js-accepted" hidden>Accepted</span>
     </section>
     ${player(them, game.pass[them])}
@@ -150,8 +153,10 @@ function render (game) {
       bus.emit('stone:mark', coords)
     })
   }
-  if (game.acceptBoard[me]) {
-    document.querySelector('.js-accept-board').setAttribute('hidden', 'hidden')
-    document.querySelector('.js-accepted').removeAttribute('hidden')
+  if (game.acceptBoard) {
+    if (game.acceptBoard[me]) {
+      document.querySelector('.js-accept-board').setAttribute('hidden', 'hidden')
+      document.querySelector('.js-accepted').removeAttribute('hidden')
+    }
   }
 }
