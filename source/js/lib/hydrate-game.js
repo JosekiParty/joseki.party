@@ -11,7 +11,5 @@ export default function hydrate (game) {
       Game = Game.play(Weiqi[color], coords)
     }
   }
-  window.Game = Game
-  console.log(Weiqi)
   return Game
 }

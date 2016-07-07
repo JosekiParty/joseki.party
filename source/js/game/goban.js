@@ -24,6 +24,8 @@ export default function () {
     } else if (matches(e.target, '.js-resign')) {
       var color = e.target.getAttribute('data-color')
       bus.emit('game:resign', color, state)
+    } else if (matches(e.target, '.js-accept-board')) {
+      bus.emit('game:accepted', state, e.target.getAttribute('data-player'))
     }
   })
   // Translate App Events in to component
@@ -31,9 +33,12 @@ export default function () {
   bus.on('game:change', render)
   bus.on('game:change', updateGameState)
   bus.on('game:change', gameIsOver)
+  bus.on('game:change', scoreGame)
   bus.on('game:play', api.play)
   bus.on('game:pass', api.pass)
   bus.on('game:over', cleanBoard)
+  bus.on('game:accepted', acceptBoard)
+  bus.on('game:final:score', showScore)
 }
 
 function updateGameState (game) {
@@ -54,6 +59,27 @@ function gameIsOver(game) {
   document.querySelector('.js-board').classList.add('game-is-over')
 }
 
+function scoreGame(game) {
+  if (game.acceptBoard.white && game.acceptBoard.black) {
+    api.score(game)
+  }
+}
+
+function showScore (score) {
+  console.log(score)
+  document.querySelector('.js-tidy-flag').setAttribute('hidden', 'hidden')
+  document.querySelector('.js-accept-section').setAttribute('hidden', 'hidden')
+  document.querySelector('.actions-white').setAttribute('hidden', 'hidden')
+  document.querySelector('.actions-black').setAttribute('hidden', 'hidden')
+  var winner
+  score > 0 ? winner = 'Black Wins' : winner = 'White Wins'
+  var points
+  score > 0 ? points = score : points = Math.abs(score)
+  document.querySelector('.js-who-wins').innerHTML = winner
+  document.querySelector('.js-how-much').innerHTML = points
+  document.querySelector('.js-winner').classList.add('is-active')
+}
+
 function updateStatePlayer (color) {
   var board = document.querySelector('.js-board')
   state.player = color.toUpperCase()
@@ -62,6 +88,11 @@ function updateStatePlayer (color) {
 function cleanBoard (game) {
   var cleaner = document.querySelector('.js-tidy-flag')
   cleaner.removeAttribute('hidden')
+}
+
+function acceptBoard (state, player) {
+  state.game.acceptBoard[player] = true
+  bus.emit('game:write', state.game)
 }
 
 function handleBoard (options) {
@@ -109,11 +140,19 @@ function render (game) {
       ${rows.join('')}
       ${invite(game, them)}
     </section>
+    <section class="js-accept-section">
+      <button class="btn btn-clear js-accept-board" data-player="${me}">Accept</button>
+      <span class="btn btn-small js-accepted" hidden>Accepted</span>
+    </section>
     ${player(them, game.pass[them])}
   `
   if (game.deadStones) {
     game.deadStones.map(function (coords) {
       bus.emit('stone:mark', coords)
     })
+  }
+  if (game.acceptBoard[me]) {
+    document.querySelector('.js-accept-board').setAttribute('hidden', 'hidden')
+    document.querySelector('.js-accepted').removeAttribute('hidden')
   }
 }

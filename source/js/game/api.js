@@ -28,11 +28,20 @@ export function pass (color, state) {
   state.game.history.length = state.game.history.length + 1
   state.game.pass[color] = true
   bus.emit('game:write', state.game)
-  window.Game = Game
 }
 
 export function resign (color, game) {
   console.log('resign', game, color)
+}
+
+export function score (game) {
+  let Game = hydrate(game)
+  if (game.deadStones) {
+    for (let i = 0; i < game.deadStones.length; i++) {
+      Game = Game.removeStone([game.deadStones[i][1], game.deadStones[i][0]])
+    }
+  }
+  bus.emit('game:final:score', Game.areaScore(game.komi))
 }
 
 function getTurn (player) {

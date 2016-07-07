@@ -35,6 +35,10 @@ export default function () {
       deadStones.push(coords)
       bus.emit('stone:mark', coords)
     }
+    state.game.acceptBoard = {
+      black: false,
+      white: false
+    }
     state.game.deadStones = deadStones
     bus.emit('game:write', state.game)
   }
