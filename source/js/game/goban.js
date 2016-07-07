@@ -29,6 +29,7 @@ export default function () {
   bus.on('game:change', gameIsOver)
   bus.on('game:play', api.play)
   bus.on('game:pass', api.pass)
+  bus.on('game:over', cleanBoard)
 }
 
 function updateGameState (game) {
@@ -38,7 +39,6 @@ function updateGameState (game) {
 
 function gameIsOver(game) {
   if (game.resigned) {
-    bus.emit('game:over', game)
     bus.emit('player:resigned', game.resigned.quitter)
   }
 
@@ -50,7 +50,15 @@ function gameIsOver(game) {
 }
 
 function updateStatePlayer (color) {
+  var board = document.querySelector('.js-board')
   state.player = color.toUpperCase()
+}
+
+function cleanBoard (game) {
+  var cleaner = document.querySelector('.js-tidy-flag')
+  console.log(cleaner)
+  cleaner.removeAttribute('hidden')
+  console.log(game)
 }
 
 function handleBoard (options) {
@@ -89,6 +97,8 @@ function render (game) {
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
   let me = document.querySelector('.js-board').getAttribute('data-me')
   let them = me === 'white' ? 'black' : 'white'
+  console.log(me, them)
+  console.log(game.pass[me], game.pass[them])
   document.querySelector('.js-board').innerHTML = `
     ${player(me, game.pass[me])}
     <section class="board board-purple

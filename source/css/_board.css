@@ -186,6 +186,13 @@
   font-family: var(--font-family);
 }
 
+.tidy {
+  color: white;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
 .player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
   background-color: var(--pink);
 }
