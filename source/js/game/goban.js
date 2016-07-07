@@ -66,7 +66,6 @@ function scoreGame(game) {
 }
 
 function showScore (score) {
-  console.log(score)
   document.querySelector('.js-tidy-flag').setAttribute('hidden', 'hidden')
   document.querySelector('.js-accept-section').setAttribute('hidden', 'hidden')
   document.querySelector('.actions-white').setAttribute('hidden', 'hidden')
