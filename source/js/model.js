@@ -16,7 +16,6 @@ export default function (options) {
   bus.on('game:write', write)
   bus.on('game:quit', quit)
   bus.on('game:destroy', destroy)
-  bus.on('stones:update', stones)
   gameServer.child('joined').update(players)
 }
 
@@ -37,9 +36,4 @@ function destroy () {
 
 function broadcast (state) {
   bus.emit('game:change', state.val())
-}
-
-function stones(deadStones, state) {
-  state.game.deadStones = deadStones
-  write(state.game)
 }

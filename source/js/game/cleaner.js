@@ -35,8 +35,8 @@ export default function () {
       deadStones.push(coords)
       bus.emit('stone:mark', coords)
     }
-
-    bus.emit('stones:update', deadStones, state)
+    state.game.deadStones = deadStones
+    bus.emit('game:write', state.game)
   }
 
   function markStone (coords) {
