@@ -63,17 +63,43 @@
   border-radius: calc(var(--node-size) / 3);
 }
 
-.player-white .board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
+.player-white .board-turn-white .node.node-empty:hover,
+.player-white .board-turn-white .node.node-empty:focus {
   outline: none;
   background-color: white;
   opacity: .8;
   cursor: pointer;
 }
 
-.player-black .board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
+.player-black .board-turn-black .node.node-empty:hover,
+.player-black .board-turn-black .node.node-empty:focus {
   outline: none;
   background-color: black;
   opacity: .8;
+  cursor: pointer;
+}
+
+.is-dead:before {
+  content: '💀';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  font-size: 3vw;
+}
+
+.game-is-over.player-white .board-turn-white .node.node-empty:hover,
+.game-is-over.player-white .board-turn-white .node.node-empty:focus,
+.game-is-over.player-black .board-turn-black .node.node-empty:hover,
+.game-is-over.player-black .board-turn-black .node.node-empty:focus {
+  opacity: 0;
+  cursor: default;
+}
+
+.game-is-over .node-black,
+.game-is-over .node-white {
   cursor: pointer;
 }
 
@@ -129,26 +155,34 @@
 
 /* purple drank/sizzurp theme */
 .player-marker {
+  margin-top: 25vw;
   width: calc(var(--board-width) / 12);
   height: calc(var(--board-width) / 12);
   box-sizing: border-box;
   border-radius: calc(var(--board-width) / 6);;
   display: inline-block;
-  float: left;
   cursor: default;
+  margin: auto
 }
 
 .player-marker.player-white {
   background-color: var(--pink);
-  margin-left: auto;
 }
 
 .player-marker.player-black {
   background-color: var(--dark-purple);
 }
 
-.board-purple {
+.board-9x9 {
+  background-image: url('9x9-purple.svg');
+}
+
+.board-13x13 {
   background-image: url('13x13-purple.svg');
+}
+
+.board-19x19 {
+  background-image: url('19x19-purple.svg');
 }
 
 .board-purple .node-white {
@@ -178,6 +212,13 @@
   font-family: var(--font-family);
 }
 
+.tidy {
+  color: white;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
 .player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
   background-color: var(--pink);
 }
@@ -186,106 +227,17 @@
   background-color: var(--dark-purple);
 }
 
-.player-black-pass-indicator, .player-white-pass-indicator {
-  display: inline-block;
-  position: absolute;
-  top: 25vw;
-  width: 2em;
-  font-size: 2.2vw;
-  background-color: var(--blue);
+.player-white .actions-black {
+  visibility: hidden;
+}
+.player-black .actions-white {
+  visibility: hidden;
+}
+
+.pass-indicator {
+  visibility: hidden;
+}
+.pass-indicator.player-passed-true {
+  visibility: visible;
   color: white;
-  padding: .75em 1em;
-  border-radius: 1.5em;
-  border: 1px solid var(--purple);
-  font-family: var(--font-family);
-}
-
-.player-black-pass-indicator {
-  left: 13vw;
-}
-.player-white-pass-indicator {
-  right: 13vw;
-}
-
-.white-controls, .black-controls {
-  display: flex;
-  flex-grow: 1;
-}
-.white-controls {
-  justify-content: flex-end;
-}
-
-.player-white .black-controls {
-  display: none;
-}
-.player-black .white-controls {
-  display: none;
-}
-
-.pass-resign-white, .resign-confirm-white,
-.pass-resign, .resign-confirm {
-  display: flex;
-  flex-grow: 1;
-}
-
-.pass-resign-white, .resign-confirm-white {
-  justify-content: flex-end;
-}
-
-.btn-confirm {
-  margin-right: 1px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.btn-resign {
-  margin-left: 1px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.btn-pass, .btn-resign, .btn-confirm {
-  white-space: nowrap;
-  align-self: flex-end;
-}
-
-.tidy {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  color: var(--pink);
-  z-index: 100;
-}
-
-.score-buttons {
-  bottom: 1rem;
-  width: 100%;
-  position: absolute;
-  align-items: flex-end;
-}
-
-.btn-score {
-  background-color: var(--purple);
-  border: 2px solid white;
-}
-.btn-score:hover {
-  border-color: var(--blue);
-
-}
-.btn-score:first-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.btn-score:last-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.score-accepted {
-  background-color: var(--blue);
-  border-color: transparent;
 }

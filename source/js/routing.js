@@ -23,7 +23,8 @@ export default function route () {
       if (state.val()) {
         bus.emit('view:set', {
           section: 'game',
-          watching: watching
+          watching: watching,
+          name: watching.game
         })
       } else {
         bus.emit('view:set', {
@@ -35,7 +36,8 @@ export default function route () {
   } else if (playing) {
     bus.emit('view:set', {
       section: 'game',
-      playing: playing
+      playing: playing,
+      name: playing.game
     })
   } else {
     bus.emit('view:set', {

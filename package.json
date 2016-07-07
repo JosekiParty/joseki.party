@@ -8,7 +8,8 @@
     "js:production": "npm run js -- -m",
     "css": "myth source/css/app.css build/app.css",
     "img": "imagemin-newer source/img/ build",
-    "html": "cp source/*.* build/",
+    "html": "static-site -s source/ -b build/",
+    "posthtml": "cp build/200/index.html build/200.html",
     "fonts": "cp source/fonts/* build/",
     "prestart": "mkdir -p build && npm-run-series img html css fonts",
     "start": "parallelshell 'rerun-script' 'npm run js -- -w' 'live-server --entry-file=200.html build'",
@@ -58,7 +59,9 @@
     "parallelshell": "^2.0.0",
     "rerun-script": "^0.6.0",
     "simplifyify": "^2.0.1",
-    "surge": "^0.17.7"
+    "static-site": "^1.2.0",
+    "surge": "^0.17.7",
+    "weiqi": "github:nikolaswise/weiqi.js"
   },
   "dependencies": {
     "dom-matches": "^2.0.0",

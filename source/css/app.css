@@ -3,6 +3,7 @@
 @import "_forms.css";
 @import "_board.css";
 @import "_banner.css";
+@import "_modal.css";
 
 :root {
   --font-family: 'Asap', sans-serif;
