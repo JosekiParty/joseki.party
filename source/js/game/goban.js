@@ -13,7 +13,11 @@ export default function () {
     if (matches(e.target, '.js-node')) {
       let x = parseInt(e.target.getAttribute('data-x'))
       let y = parseInt(e.target.getAttribute('data-y'))
-      bus.emit('game:play', x, y, state)
+      if (document.querySelector('.js-game-over')) {
+        bus.emit('stone:remove', x, y, state)
+      } else {
+        bus.emit('game:play', x, y, state)
+      }
     } else if (matches(e.target, '.js-pass')) {
       var color = e.target.getAttribute('data-color')
       bus.emit('game:pass', color, state)
@@ -41,12 +45,13 @@ function gameIsOver(game) {
   if (game.resigned) {
     bus.emit('player:resigned', game.resigned.quitter)
   }
-
   if (game.pass.black && game.pass.white) {
     bus.emit('game:over', game)
   } else if (game.resign.black || game.resign.white) {
     bus.emit('game:over', game)
   }
+  document.querySelector('.js-board').classList.add('js-game-over')
+  document.querySelector('.js-board').classList.add('game-is-over')
 }
 
 function updateStatePlayer (color) {
@@ -56,9 +61,7 @@ function updateStatePlayer (color) {
 
 function cleanBoard (game) {
   var cleaner = document.querySelector('.js-tidy-flag')
-  console.log(cleaner)
   cleaner.removeAttribute('hidden')
-  console.log(game)
 }
 
 function handleBoard (options) {
@@ -97,8 +100,6 @@ function render (game) {
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
   let me = document.querySelector('.js-board').getAttribute('data-me')
   let them = me === 'white' ? 'black' : 'white'
-  console.log(me, them)
-  console.log(game.pass[me], game.pass[them])
   document.querySelector('.js-board').innerHTML = `
     ${player(me, game.pass[me])}
     <section class="board board-purple
@@ -110,4 +111,9 @@ function render (game) {
     </section>
     ${player(them, game.pass[them])}
   `
+  if (game.deadStones) {
+    game.deadStones.map(function (coords) {
+      bus.emit('stone:mark', coords)
+    })
+  }
 }

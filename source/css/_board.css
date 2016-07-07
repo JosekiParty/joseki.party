@@ -63,17 +63,43 @@
   border-radius: calc(var(--node-size) / 3);
 }
 
-.player-white .board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
+.player-white .board-turn-white .node.node-empty:hover,
+.player-white .board-turn-white .node.node-empty:focus {
   outline: none;
   background-color: white;
   opacity: .8;
   cursor: pointer;
 }
 
-.player-black .board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
+.player-black .board-turn-black .node.node-empty:hover,
+.player-black .board-turn-black .node.node-empty:focus {
   outline: none;
   background-color: black;
   opacity: .8;
+  cursor: pointer;
+}
+
+.is-dead:before {
+  content: '💀';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  font-size: 3vw;
+}
+
+.game-is-over.player-white .board-turn-white .node.node-empty:hover,
+.game-is-over.player-white .board-turn-white .node.node-empty:focus,
+.game-is-over.player-black .board-turn-black .node.node-empty:hover,
+.game-is-over.player-black .board-turn-black .node.node-empty:focus {
+  opacity: 0;
+  cursor: default;
+}
+
+.game-is-over .node-black,
+.game-is-over .node-white {
   cursor: pointer;
 }
 

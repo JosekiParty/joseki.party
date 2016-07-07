@@ -27,6 +27,10 @@ Goban()
 import Player from './game/player'
 Player()
 
+
+import Cleaner from './game/cleaner'
+Cleaner()
+
 function log (whatever) {
   console.log(whatever)
 }
