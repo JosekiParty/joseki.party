@@ -1,0 +1,125 @@
+:root {
+  --lightest-purple: #F1EEFB;
+  --light-purple: #D9CCFF;
+  --purple: #6534ff;
+  --dark-purple: #431A5F;
+  --blue: #62bcfa;
+  --pink: #fccdd3;
+  --lavender: #bbc4ef;
+}
+
+body.theme-sizzurp {
+  background-color: var(--purple);
+}
+
+/* Introduction */
+
+.theme-sizzurp .banner-title {
+  color: var(--lightest-purple);
+  text-shadow: .05em .05em 0 var(--purple), .1em .1em 0 rgba(0,0,0,0.3);
+}
+
+.theme-sizzurp .banner-tagline {
+  color: var(--light-purple);
+}
+
+/* Create Game Form */
+
+.theme-sizzurp .panel {
+  border-color: var(--pink);
+}
+
+.theme-sizzurp select {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.theme-sizzurp select:hover,
+.theme-sizzurp select:focus {
+  background-color: var(--pink);
+  color: var(--purple);
+}
+
+.theme-sizzurp .input-text {
+  background-color: var(--lightest-purple);
+  border: 1px solid var(--lightest-purple);
+  color: var(--dark-purple);
+}
+
+.theme-sizzurp .input-text:focus {
+  border-color: var(--blue);
+}
+
+/* Buttons */
+.theme-sizzurp .btn {
+  background-color: var(--blue);
+  color: white;
+}
+
+.theme-sizzurp .btn-clear {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.theme-sizzurp .btn:hover,
+.theme-sizzurp .btn:focus {
+  border-color: red;
+}
+
+/* Invitation */
+
+.theme-sizzurp .board-invite {
+  color: var(--light-purple);
+}
+
+/* Board */
+
+.theme-sizzurp .table {
+  background-color: var(--purple);
+  color: var(--lightest-purple);
+}
+
+/* Stones */
+
+.theme-sizzurp .node-white {
+  background-color: var(--pink);
+}
+
+.theme-sizzurp .node-black {
+  background-color: var(--dark-purple);
+}
+
+.theme-sizzurp .node-last:before {
+  background-color: var(--blue);
+}
+
+.theme-sizzurp .player-white .board-turn-white .node.node-empty:hover,
+.theme-sizzurp .player-white .board-turn-white .node.node-empty:focus {
+  background-color: var(--pink);
+}
+.theme-sizzurp .player-black .board-turn-black .node.node-empty:hover,
+.theme-sizzurp .player-black .board-turn-black .node.node-empty:focus {
+  background-color:  var(--dark-purple);
+}
+
+/* Player Control */
+
+.theme-sizzurp .player-marker.player-white {
+  background-color: var(--pink);
+}
+
+.theme-sizzurp .player-marker.player-black {
+  background-color: var(--dark-purple);
+}
+
+.theme-sizzurp .komi {
+  background-color: var(--blue);
+  color: white;
+  border-color: var(--purple);
+}
+
+/* Modal */
+.theme-sizzurp .modal-content {
+  color: var(--lightest-purple);
+  background-color:  var(--dark-purple);
+}

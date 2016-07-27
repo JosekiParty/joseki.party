@@ -42,11 +42,11 @@
 }
 
 .node-white {
-  border: 2px solid var(--purple);
+  border: 2px solid black;
 }
 
 .node-black {
-  border: 2px solid var(--purple);
+  border: 2px solid black;
 }
 
 .node-last:before {
@@ -106,7 +106,6 @@
 /* invite */
 .board-invite {
   max-width: 20em;
-  color: var(--light-purple);
   position: absolute;
   top: 50vh;
   left: 0;
@@ -166,11 +165,11 @@
 }
 
 .player-marker.player-white {
-  background-color: var(--pink);
+  background-color: white;
 }
 
 .player-marker.player-black {
-  background-color: var(--dark-purple);
+  background-color: black;
 }
 
 .board-9x9 {
@@ -186,15 +185,15 @@
 }
 
 .board-purple .node-white {
-  background-color: var(--pink);
+  background-color: white;
 }
 
 .board-purple .node-black {
-  background-color: var(--dark-purple);
+  background-color: black;
 }
 
 .node-last:before {
-  background-color: var(--blue);
+  background-color: blue;
 }
 
 .komi {
@@ -204,11 +203,11 @@
   width: 0.85vw;
   height: 0.85vw;
   font-size: 0.85vw;
-  background-color: var(--blue);
+  background-color:blue;
   color: white;
   padding: .75em 1em;
   border-radius: 2vw;
-  border: 1px solid var(--purple);
+  border: 1px solid black;
   font-family: var(--font-family);
 }
 
@@ -218,7 +217,7 @@
   text-align: center;
   width: 100%;
 }
-
+/*
 .player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
   background-color: var(--pink);
 }
@@ -226,7 +225,7 @@
 .player-black .board-purple.board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
   background-color: var(--dark-purple);
 }
-
+*/
 .player-white .actions-black {
   visibility: hidden;
 }

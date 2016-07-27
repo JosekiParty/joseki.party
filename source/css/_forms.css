@@ -9,7 +9,7 @@ label {
   cursor: pointer;
   display: inline-block;
   font-size: 1rem;
-  background-color: var(--blue);
+  background-color: blue;
   color: white;
   padding: .75em 1em;
   border-radius: 1.5em;
@@ -28,9 +28,9 @@ label {
 
 .btn-clear {
   font-size: .85rem;
-  border: 2px solid var(--blue);
+  border: 2px solid blue;
   background-color: transparent;
-  color: var(--blue);
+  color: blue;
 }
 
 .btn-center {
@@ -54,30 +54,29 @@ select {
   font-size: 1rem;
   padding: .75em 1em;
   border-radius: 1.5em;
-  border: 3px solid var(--pink);
-  color: var(--pink);
+  border: 3px solid blue;
+  color:vlue;
 }
 
 select:hover, select:focus {
-  background-color: var(--pink);
-  color: var(--purple);
-  outline: none;
+  background-color: blue;
+  color: white;
 }
 
 .input-text {
-  background-color: var(--lightest-purple);
+  background-color: white;
   border-radius: 1.5em;
   font-family: var(--font-family);
   font-size: 1rem;
   padding: .75em 1em;
   box-sizing: border-box;
-  border: 1px solid var(--lightest-purple);
-  color: var(--dark-purple);
+  border: 1px solid white;
+  color: black;
 }
 
 .input-text:focus {
   outline: none;
-  border-color: var(--blue);
+  border-color: blue;
 }
 
 

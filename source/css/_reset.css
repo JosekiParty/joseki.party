@@ -1,5 +1,4 @@
 html {
-  background-color: var(--purple);
   overflow-y: scroll;
   height: 100%;
   font-size: 100%;
@@ -9,6 +8,7 @@ html {
 }
 
 body {
+  background-color: white;
   min-height: 100%;
   margin: 0;
 }

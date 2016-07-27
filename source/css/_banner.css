@@ -11,12 +11,9 @@
   font-size: 5rem;
   letter-spacing: .05em;
   margin: 0 0 1rem 0;
-  color: var(--lightest-purple);
-  text-shadow: .05em .05em 0 var(--purple), .1em .1em 0 rgba(0,0,0,0.3);
 }
 
 .banner-tagline {
   margin: 0 0 2rem 0;
   font-weight: 400;
-  color: var(--light-purple);
 }
