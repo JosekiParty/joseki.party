@@ -8,14 +8,14 @@ export default function () {
   bus.on('stone:mark', markStone)
   bus.on('stone:unmark', unmarkStone)
 
-  function clickStone(x, y, state) {
+  function clickStone (x, y, state) {
     state.game.deadStones ? deadStones = state.game.deadStones : deadStones = []
     toggleDead([x, y], state)
   }
 
   function toggleDead (coords, state) {
     var isDead = deadStones.filter(function (stone) {
-      if (stone[0] == coords[0] && stone[1] == coords[1]) {
+      if (stone[0] === coords[0] && stone[1] === coords[1]) {
         return true
       } else {
         return false
@@ -24,7 +24,7 @@ export default function () {
 
     if (isDead) {
       deadStones = deadStones.filter(function (stone) {
-        if (stone[0] == coords[0] && stone[1] == coords[1]) {
+        if (stone[0] === coords[0] && stone[1] === coords[1]) {
           return false
         } else {
           return true
@@ -51,7 +51,4 @@ export default function () {
     let target = document.querySelector(`[data-x="${coords[0]}"][data-y="${coords[1]}"]`)
     target.classList.remove('is-dead')
   }
-
 }
-
-
