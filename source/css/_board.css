@@ -217,15 +217,16 @@
   text-align: center;
   width: 100%;
 }
-/*
-.player-white .board-purple.board-turn-white .node.node-empty:hover, .player-white .board-turn-white .node.node-empty:focus {
-  background-color: var(--pink);
+
+.accept-section {
+  position: absolute;
+  left: 50%;
+  width: 12rem;
+  margin-left: -6rem;
+  text-align: center;
+  top: 5rem;
 }
 
-.player-black .board-purple.board-turn-black .node.node-empty:hover, .player-black .board-turn-black .node.node-empty:focus {
-  background-color: var(--dark-purple);
-}
-*/
 .player-white .actions-black {
   visibility: hidden;
 }
@@ -235,6 +236,8 @@
 
 .pass-indicator {
   visibility: hidden;
+  position: absolute;
+  font-size: 5vw
 }
 .pass-indicator.player-passed-true {
   visibility: visible;

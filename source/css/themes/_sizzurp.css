@@ -78,6 +78,7 @@ body.theme-sizzurp {
 
 .theme-sizzurp .btn-clear {
   border-color: var(--blue);
+  background-color: transparent;
   color: var(--blue);
 }
 
@@ -130,6 +131,10 @@ body.theme-sizzurp {
 
 .theme-sizzurp .player-marker.player-black {
   background-color: var(--dark-purple);
+}
+
+.pass-indicator {
+  text-shadow: .05em .05em 0 var(--purple), .1em .1em 0 rgba(0,0,0,0.3);
 }
 
 .theme-sizzurp .komi {

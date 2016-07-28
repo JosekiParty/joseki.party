@@ -142,7 +142,7 @@ function render (game) {
       ${rows.join('')}
       ${invite(game, them)}
     </section>
-    <section class="js-accept-section">
+    <section class="js-accept-section accept-section">
       <button class="btn btn-clear js-accept-board" data-player="${me}" hidden>Accept</button>
       <span class="btn btn-small js-accepted" hidden>Accepted</span>
     </section>
@@ -155,8 +155,8 @@ function render (game) {
   }
   if (game.acceptBoard) {
     if (game.acceptBoard[me]) {
-      document.querySelector('.js-accept-board').setAttribute('hidden', 'hidden')
       document.querySelector('.js-accepted').removeAttribute('hidden')
+      document.querySelector('.js-accept-board').setAttribute('hidden', 'hidden')
     }
   }
 }

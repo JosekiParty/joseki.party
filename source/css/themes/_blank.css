@@ -73,6 +73,7 @@ body.theme-blank {
 .theme-blank .btn-clear {
   /*border-color: var(--blue);*/
   /*color: var(--blue);*/
+  color: blue;
 }
 
 .theme-blank .btn:hover,
