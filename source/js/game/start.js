@@ -31,6 +31,10 @@ function create (game) {
 
   var gameState = {
     name: game.name,
+    acceptBoard: {
+      black: false,
+      white: false,
+    },
     joined: {
       black: isBlack,
       white: isWhite

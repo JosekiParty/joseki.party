@@ -104,10 +104,12 @@ body.theme-sizzurp {
 
 .theme-sizzurp .node-white {
   background-color: var(--pink);
+  border-color: var(--purple);
 }
 
 .theme-sizzurp .node-black {
   background-color: var(--dark-purple);
+  border-color: var(--purple);
 }
 
 .theme-sizzurp .node-last:before {
@@ -117,6 +119,7 @@ body.theme-sizzurp {
 .theme-sizzurp .player-white .board-turn-white .node.node-empty:hover,
 .theme-sizzurp .player-white .board-turn-white .node.node-empty:focus {
   background-color: var(--pink);
+  border-color: var(--purple);
 }
 .theme-sizzurp .player-black .board-turn-black .node.node-empty:hover,
 .theme-sizzurp .player-black .board-turn-black .node.node-empty:focus {
