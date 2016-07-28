@@ -35,5 +35,20 @@ function log (whatever) {
   console.log(whatever)
 }
 
+function change (e) {
+  e.preventDefault()
+  var theme = e.target.getAttribute('data-theme')
+  var body = document.querySelector('body')
+  body.className = 'theme-' + theme
+}
+
+var themeButtons = document.querySelectorAll('.js-switch-theme')
+console.log(themeButtons)
+themeButtons.forEach(function (button) {
+  console.log(button)
+  button.addEventListener('click', change)
+})
+
+
 route()
 window.addEventListener('popstate', route)

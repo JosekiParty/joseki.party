@@ -1,0 +1,140 @@
+:root {
+
+}
+
+body.theme-blank {
+  /*background-color: var(--purple);*/
+}
+
+/* Theme Picker */
+
+.blank-marker {
+  /*color: var(--purple) !important;*/
+}
+
+.blank-marker:hover {
+  /*color: var(--pink) !important;*/
+}
+
+.theme-blank .menu-item,
+.theme-blank .menu-open-button {
+  /*background: var(--blue);*/
+  /*color: var(--lightest-purple);*/
+}
+.theme-blank .menu-item:hover {
+  /*color: var(--lightest-purple);*/
+  /*color: var(--blue);*/
+}
+
+/* Introduction */
+
+.theme-blank .banner-title {
+  /*color: var(--lightest-purple);*/
+  /*text-shadow: .05em .05em 0 var(--purple), .1em .1em 0 rgba(0,0,0,0.3);*/
+}
+
+.theme-blank .banner-tagline {
+  /*color: var(--light-purple);*/
+}
+
+/* Create Game Form */
+
+.theme-blank .panel {
+  /*border-color: var(--pink);*/
+}
+
+.theme-blank select {
+  /*border-color: var(--pink);*/
+  /*color: var(--pink);*/
+}
+
+.theme-blank select:hover,
+.theme-blank select:focus {
+  /*background-color: var(--pink);*/
+  /*color: var(--purple);*/
+}
+
+.theme-blank .input-text {
+  /*background-color: var(--lightest-purple);*/
+  /*border: 1px solid var(--lightest-purple);*/
+  /*color: var(--dark-purple);*/
+}
+
+.theme-blank .input-text:focus {
+  /*border-color: var(--blue);*/
+}
+
+/* Buttons */
+.theme-blank .btn {
+  /*background-color: var(--blue);*/
+  color: white;
+}
+
+.theme-blank .btn-clear {
+  /*border-color: var(--blue);*/
+  /*color: var(--blue);*/
+}
+
+.theme-blank .btn:hover,
+.theme-blank .btn:focus {
+  border-color: red;
+}
+
+/* Invitation */
+
+.theme-blank .board-invite {
+  /*color: var(--light-purple);*/
+}
+
+/* Board */
+
+.theme-blank .table {
+  /*background-color: var(--purple);*/
+  /*color: var(--lightest-purple);*/
+}
+
+/* Stones */
+
+.theme-blank .node-white {
+  /*background-color: var(--pink);*/
+}
+
+.theme-blank .node-black {
+  /*background-color: var(--dark-purple);*/
+}
+
+.theme-blank .node-last:before {
+  /*background-color: var(--blue);*/
+}
+
+.theme-blank .player-white .board-turn-white .node.node-empty:hover,
+.theme-blank .player-white .board-turn-white .node.node-empty:focus {
+  /*background-color: var(--pink);*/
+}
+.theme-blank .player-black .board-turn-black .node.node-empty:hover,
+.theme-blank .player-black .board-turn-black .node.node-empty:focus {
+  /*background-color:  var(--dark-purple);*/
+}
+
+/* Player Control */
+
+.theme-blank .player-marker.player-white {
+  /*background-color: var(--pink);*/
+  border: 3px solid black;
+}
+
+.theme-blank .player-marker.player-black {
+  /*background-color: var(--dark-purple);*/
+}
+
+.theme-blank .komi {
+  /*background-color: var(--blue);*/
+  color: white;
+  /*border-color: var(--purple);*/
+}
+
+/* Modal */
+.theme-blank .modal-content {
+  /*color: var(--lightest-purple);*/
+  /*background-color:  var(--dark-purple);*/
+}

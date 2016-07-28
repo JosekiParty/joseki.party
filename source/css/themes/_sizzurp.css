@@ -12,6 +12,26 @@ body.theme-sizzurp {
   background-color: var(--purple);
 }
 
+/* Theme Picker */
+
+.sizzurp-marker {
+  color: var(--purple) !important;
+}
+
+.sizzurp-marker:hover {
+  color: var(--pink) !important;
+}
+
+.theme-sizzurp .menu-item,
+.theme-sizzurp .menu-open-button {
+  background: var(--blue);
+  color: var(--lightest-purple);
+}
+.theme-sizzurp .menu-item:hover {
+  color: var(--lightest-purple);
+  color: var(--blue);
+}
+
 /* Introduction */
 
 .theme-sizzurp .banner-title {
