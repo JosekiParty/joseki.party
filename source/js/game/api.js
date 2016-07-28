@@ -5,11 +5,11 @@ import hydrate from '../lib/hydrate-game'
 // THIS IS WEIQI API GOODNESS
 export function play (x, y, state) {
   var Game = hydrate(state.game)
-  Game = Game.play(Weiqi[state.player], [y,x])
+  Game = Game.play(Weiqi[state.player], [y, x])
   state.game.turn = getTurn(state.player)
-  state.game.last = [y,x]
+  state.game.last = [y, x]
   state.game.history[state.game.history.length] = {
-    y: y, x:x, color: state.player
+    y: y, x: x, color: state.player
   }
   state.game.history.length = state.game.history.length + 1
   state.game.goban = Game.getBoard().toArray()
@@ -44,7 +44,7 @@ export function score (game) {
 }
 
 function getTurn (player) {
-  if (player == 'BLACK') {
+  if (player === 'BLACK') {
     return 'white'
   } else {
     return 'black'

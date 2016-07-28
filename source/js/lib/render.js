@@ -1,5 +1,3 @@
-import bus from './bus'
-
 function render (game) {
   var rows = game.goban.map((r, y) => {
     var row = r.map((n, x) => {
@@ -18,7 +16,7 @@ function render (game) {
   })
 
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
-  let them = game.me === 'white' ? 'black' : 'white'
+
   document.querySelector('.js-board').innerHTML = `
     <section class="board board-purple
                     ${full}

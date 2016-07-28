@@ -1,6 +1,5 @@
 import bus from '../lib/bus'
 import * as classy from '../lib/classy'
-import matches from 'dom-matches'
 
 export default function () {
   bus.on('game:resign', confirmResignation)

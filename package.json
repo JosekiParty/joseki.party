@@ -13,7 +13,7 @@
     "fonts": "cp source/fonts/* build/",
     "prestart": "mkdir -p build && npm-run-series img html css fonts",
     "start": "parallelshell 'rerun-script' 'npm run js -- -w' 'live-server --entry-file=200.html build'",
-    "test": "standard source/js/**/*.js",
+    "test": "standard --verbose source/js/**/*.js | snazzy",
     "predeploy": "npm-run-series prestart js",
     "deploy": "surge -p build/ -d joseki.party"
   },
@@ -59,6 +59,8 @@
     "parallelshell": "^2.0.0",
     "rerun-script": "^0.6.0",
     "simplifyify": "^2.0.1",
+    "snazzy": "^4.0.0",
+    "standard": "^7.1.2",
     "static-site": "^1.2.0",
     "surge": "^0.17.7",
     "weiqi": "github:nikolaswise/weiqi.js"
