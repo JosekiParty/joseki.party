@@ -19,10 +19,10 @@ export default function () {
         bus.emit('game:play', x, y, state)
       }
     } else if (matches(e.target, '.js-pass')) {
-      var color = e.target.getAttribute('data-color')
+      let color = e.target.getAttribute('data-color')
       bus.emit('game:pass', color, state)
     } else if (matches(e.target, '.js-resign')) {
-      var color = e.target.getAttribute('data-color')
+      let color = e.target.getAttribute('data-color')
       bus.emit('game:resign', color, state)
     } else if (matches(e.target, '.js-accept-board')) {
       bus.emit('game:accepted', state, e.target.getAttribute('data-player'))
@@ -46,7 +46,7 @@ function updateGameState (game) {
   bus.emit('game:write', state.game)
 }
 
-function gameIsOver(game) {
+function gameIsOver (game) {
   if (game.resigned) {
     bus.emit('player:resigned', game.resigned.quitter)
   }
@@ -60,7 +60,7 @@ function gameIsOver(game) {
   }
 }
 
-function scoreGame(game) {
+function scoreGame (game) {
   if (game.acceptBoard) {
     if (game.acceptBoard.white && game.acceptBoard.black) {
       api.score(game)
@@ -83,7 +83,6 @@ function showScore (score) {
 }
 
 function updateStatePlayer (color) {
-  var board = document.querySelector('.js-board')
   state.player = color.toUpperCase()
 }
 
@@ -100,13 +99,13 @@ function acceptBoard (state, player) {
 function handleBoard (options) {
   var board = document.querySelector('.js-board')
   if (options.watching) {
-    board.classList.remove(`player-white`)
-    board.classList.remove(`player-black`)
+    board.classList.remove('player-white')
+    board.classList.remove('player-black')
     board.classList.add('watching')
   } else if (options.playing) {
     updateStatePlayer(options.playing.color)
-    board.classList.remove(`player-white`)
-    board.classList.remove(`player-black`)
+    board.classList.remove('player-white')
+    board.classList.remove('player-black')
     board.classList.add(`player-${options.playing.color}`)
     board.setAttribute('data-me', options.playing.color)
   }

@@ -21,7 +21,7 @@ function create (game) {
   var isBlack
   var isWhite
 
-  if (game.color == 'black') {
+  if (game.color === 'black') {
     isBlack = true
     isWhite = false
   } else {

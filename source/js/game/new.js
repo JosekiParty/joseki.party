@@ -6,13 +6,11 @@ export default function () {
     e.preventDefault
     bus.emit('game:new')
   })
-    bus.on('game:new', newGame)
-};
+  bus.on('game:new', newGame)
+}
 
 function newGame () {
   let name = generateName()
   console.log(name)
-  history.pushState({}, name, `/${name}/`);
-};
-
-
+  window.history.pushState({}, name, `/${name}/`)
+}
