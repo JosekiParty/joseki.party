@@ -3,6 +3,9 @@ import matches from 'dom-matches'
 import * as api from './api'
 import invite from '../templates/invite-opponent'
 import player from '../templates/player-control'
+import x9 from '../templates/9x9'
+import x13 from '../templates/13x13'
+import x19 from '../templates/19x19'
 
 var state = {}
 
@@ -113,6 +116,16 @@ function handleBoard (options) {
 
 function render (game) {
   if (!game) return
+
+  var grid
+  if (game.size === 13) {
+    grid = x13()
+  } else if (game.size === 9) {
+    grid = x9()
+  } else if (game.size == 19) {
+    grid = x19()
+  }
+
   var rows = game.goban.map((r, y) => {
     var row = r.map((n, x) => {
       var isLast = game.last[0] === y && game.last[1] === x ? 'node-last' : ''
@@ -132,16 +145,18 @@ function render (game) {
   let full = game.joined && game.joined.black && game.joined.white ? 'board-full' : ''
   let me = document.querySelector('.js-board').getAttribute('data-me')
   let them = me === 'white' ? 'black' : 'white'
+  console.log(game.size)
   document.querySelector('.js-board').innerHTML = `
     ${player(me, game.pass[me])}
     <section class="board board-purple
                     ${full}
                     board-turn-${game.turn}
                     board-${game.size}x${game.size}">
+      ${grid}
       ${rows.join('')}
       ${invite(game, them)}
     </section>
-    <section class="js-accept-section">
+    <section class="js-accept-section accept-section">
       <button class="btn btn-clear js-accept-board" data-player="${me}" hidden>Accept</button>
       <span class="btn btn-small js-accepted" hidden>Accepted</span>
     </section>
@@ -154,8 +169,8 @@ function render (game) {
   }
   if (game.acceptBoard) {
     if (game.acceptBoard[me]) {
-      document.querySelector('.js-accept-board').setAttribute('hidden', 'hidden')
       document.querySelector('.js-accepted').removeAttribute('hidden')
+      document.querySelector('.js-accept-board').setAttribute('hidden', 'hidden')
     }
   }
 }

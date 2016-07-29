@@ -54,7 +54,7 @@
     "babelify": "^7.2.0",
     "imagemin-newer": "^1.0.1",
     "live-server": "^0.9.2",
-    "myth": "^1.5.0",
+    "myth": "github:pin3da/myth",
     "npm-run-series": "^1.0.0",
     "parallelshell": "^2.0.0",
     "rerun-script": "^0.6.0",

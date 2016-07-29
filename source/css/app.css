@@ -4,16 +4,13 @@
 @import "_board.css";
 @import "_banner.css";
 @import "_modal.css";
+@import "_theme-switcher.css";
+
+@import "themes/_blank.css";
+@import "themes/_sizzurp.css";
 
 :root {
   --font-family: 'Asap', sans-serif;
-  --lightest-purple: #F1EEFB;
-  --light-purple: #D9CCFF;
-  --purple: #6534ff;
-  --dark-purple: #431A5F;
-  --blue: #62bcfa;
-  --pink: #fccdd3;
-  --lavender: #bbc4ef;
   --gray: #dfdfdf;
   --dark-gray: #8f8f8f;
 }
@@ -40,11 +37,6 @@
   display: table;
 }
 
-.table-purple {
-  background-color: var(--purple);
-  color: var(--lightest-purple);
-}
-
 .table-cell {
   display: table-cell;
   vertical-align: middle;
@@ -53,8 +45,8 @@
 .panel {
   font-size: 2rem;
   padding: 3rem 4rem;
-  border: 3px solid var(--pink);
   box-sizing: border-box;
+  border: 2px solid blue;
   margin: 0 auto;
   max-width: 42em;
   display: table;
