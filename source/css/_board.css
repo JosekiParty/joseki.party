@@ -5,6 +5,11 @@
   --node-size-nineteen: calc(var(--board-width) / 19 * .8);
 }
 
+body {
+  max-width: 1720px;
+  margin: auto;
+}
+
 /* The background lines for the board */
 .board-wrap {
   position: relative;
@@ -16,7 +21,9 @@
 .board {
   position: relative;
   width: var(--board-width);
+  max-width: 1000px;
   height: var(--board-width);
+  max-height: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -25,6 +32,7 @@
 
 .board-row {
   width: var(--board-width);
+  max-width: 1000px;
   display: flex;
   justify-content: space-between;
 }
@@ -80,7 +88,9 @@
 }
 .board-19x19 .node {
   width: var(--node-size-nineteen);
+  max-width: 38px;
   height: var(--node-size-nineteen);
+  max-height: 38px;
   border-radius: calc(var(--node-size-nineteen) / 2);
 }
 
@@ -207,6 +217,7 @@
   width: 14vw;
   box-sizing: border-box;
   height: var(--board-width);
+  max-height: 1000px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
