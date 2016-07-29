@@ -1,7 +1,8 @@
 :root {
-  --board-size: 13;
   --board-width: 60vw;
-  --node-size: calc(var(--board-width) / var(--board-size) * .8);
+  --node-size-nine: calc(var(--board-width) / 9 * .8);
+  --node-size-thirteen: calc(var(--board-width) / 13 * .8);
+  --node-size-nineteen: calc(var(--board-width) / 19 * .8);
 }
 
 /* The background lines for the board */
@@ -13,10 +14,9 @@
 }
 
 .board {
+  position: relative;
   width: var(--board-width);
   height: var(--board-width);
-  background: url('13x13.svg') no-repeat center transparent;
-  background-size: calc(var(--board-width) - var(--node-size));
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -29,16 +29,59 @@
   justify-content: space-between;
 }
 
+.goban-grid {
+  position: absolute;
+}
+
+.board-9x9 .goban-grid {
+  max-width: 91.7%;
+  left: calc(var(--node-size-nine) / 2);
+  right: calc(var(--node-size-nine) / 2);
+  top: calc(var(--node-size-nine) / 2);
+  bottom: calc(var(--node-size-nine) / 2);
+}
+
+.board-13x13 .goban-grid {
+  max-width: 94%;
+  left: calc(var(--node-size-thirteen) / 2);
+  right: calc(var(--node-size-thirteen) / 2);
+  top: calc(var(--node-size-thirteen) / 2);
+  bottom: calc(var(--node-size-thirteen) / 2);
+}
+
+.board-19x19 .goban-grid {
+  max-width: 96%;
+  left: calc(var(--node-size-nineteen) / 2);
+  right: calc(var(--node-size-nineteen) / 2);
+  top: calc(var(--node-size-nineteen) / 2);
+  bottom: calc(var(--node-size-nineteen) / 2);
+}
+
 /* A space you can play in */
 .node {
   position: relative;
-  width: var(--node-size);
-  height: var(--node-size);
   box-sizing: border-box;
-  border-radius: calc(var(--node-size) / 2);
   display: inline-block;
   float: left;
   cursor: default;
+}
+
+.board-9x9 .node   {
+  width: var(--node-size-nine);
+  height: var(--node-size-nine);
+  border-radius: calc(var(--node-size-nine) / 2);
+
+}
+.board-13x13 .node {
+  width: var(--node-size-thirteen);
+  height: var(--node-size-thirteen);
+  border-radius: calc(var(--node-size-thirteen) / 2);
+
+}
+.board-19x19 .node {
+  width: var(--node-size-nineteen);
+  height: var(--node-size-nineteen);
+  border-radius: calc(var(--node-size-nineteen) / 2);
 }
 
 .node-white {
@@ -53,14 +96,31 @@
   content: "";
   display: block;
   position: absolute;
-  height: calc(var(--node-size) / 4);
-  width: calc(var(--node-size) / 4);
   left: 50%;
   top: 50%;
-  margin-left: calc(var(--node-size) / -8);
-  margin-top: calc(var(--node-size) / -8);
   box-sizing: border-box;
-  border-radius: calc(var(--node-size) / 3);
+}
+
+.board-9x9 .node-last:before   {
+  height: calc(var(--node-size-nine) / 4);
+  width: calc(var(--node-size-nine) / 4);
+  margin-left: calc(var(--node-size-nine) / -8);
+  margin-top: calc(var(--node-size-nine) / -8);
+  border-radius: calc(var(--node-size-nine) / 3);
+}
+.board-13x13 .node-last:before {
+  height: calc(var(--node-size-thirteen) / 4);
+  width: calc(var(--node-size-thirteen) / 4);
+  margin-left: calc(var(--node-size-thirteen) / -8);
+  margin-top: calc(var(--node-size-thirteen) / -8);
+  border-radius: calc(var(--node-size-thirteen) / 3);
+}
+.board-19x19 .node-last:before {
+  height: calc(var(--node-size-nineteen) / 4);
+  width: calc(var(--node-size-nineteen) / 4);
+  margin-left: calc(var(--node-size-nineteen) / -8);
+  margin-top: calc(var(--node-size-nineteen) / -8);
+  border-radius: calc(var(--node-size-nineteen) / 3);
 }
 
 .player-white .board-turn-white .node.node-empty:hover,
@@ -170,18 +230,6 @@
 
 .player-marker.player-black {
   background-color: black;
-}
-
-.board-9x9 {
-  background-image: url('9x9-purple.svg');
-}
-
-.board-13x13 {
-  background-image: url('13x13-purple.svg');
-}
-
-.board-19x19 {
-  background-image: url('19x19-purple.svg');
 }
 
 .board-purple .node-white {
