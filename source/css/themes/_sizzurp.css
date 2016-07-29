@@ -95,6 +95,10 @@ body.theme-sizzurp {
 
 /* Board */
 
+.theme-sizzurp svg path {
+  fill: var(--dark-purple);
+}
+
 .theme-sizzurp .table {
   background-color: var(--purple);
   color: var(--lightest-purple);

@@ -89,6 +89,10 @@ body.theme-blank {
 
 /* Board */
 
+.theme-blank svg path {
+  fill: black;
+}
+
 .theme-blank .table {
   /*background-color: var(--purple);*/
   /*color: var(--lightest-purple);*/
