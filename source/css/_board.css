@@ -32,7 +32,7 @@ body {
 
 .board-row {
   width: var(--board-width);
-  max-width: 900px;
+  max-width: 986px;
   margin: auto;
   display: flex;
   justify-content: space-between;
